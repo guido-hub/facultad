@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS</title>
+	<meta name="description" content="Esta es mi primera página Web"/>
+	<meta name="author" content="Pepe">
+	<meta charset="utf-8">
+</head>
+<style>
+	html, body{
+		height: 100%;
+		overflow: hidden;
+	}
+	div.contenedor{
+		height: 100%;
+		width: 80%;
+		background-color: yellow;
+		margin: auto;
+		font-size: 1.5vw;
+	}
+	div.encabezado{
+		height: 10%;
+		width: 100%;
+		display: block;
+		background-color: orange;
+		justify-content: center;
+		display: flex;
+		align-items: center;
+	}
+	div.menu{
+		width: 100%;
+		height: 5%;
+		display: block;
+	}
+	div.cuerpo{
+		width: 100%;
+		height: 75%;
+		background-color: lightgreen;
+		overflow: auto;
+		display: block;
+	}
+	img{
+		max-width: 100%;
+		max-height: 100%;
+	}
+	div.articulo{
+		position: relative;
+		top: 1px;
+		left: 1px;
+		width: 202px;
+		background-color: lightblue;
+		height: auto;
+		float: left;
+		font: cursive;
+		font-family: monospace;
+		font-size: 14px;
+	}
+	div.pie{
+		height: 10%;
+		width: 100%;
+		justify-content: center;
+		display: flex;
+		align-items: center;
+		background-color: orange;
+	}
+	a.boton{
+		height: 100%;
+		width: 25%;
+		justify-content: center;
+		display: flex;
+		align-items: center;
+		color: black;
+		background-color: lightgrey;
+		outline: black solid 1px;
+		float: left;
+		font-family: cursive;
+		font-size: 20px;
+		font-size: 1vw;
+	}
+	a.boton:hover{
+		background-color: brown;
+		color: white;
+	}
+</style>
+<body>
+	<div class="contenedor">
+		<div class="encabezado">
+			<header>	
+				<h2>Layout Responsivo</h2>
+			</header>		
+		</div>
+		<div class="menu">
+			<a href="/facultad/Css/index.html" class="boton">CSS</a>
+			<a href="/facultad/JavaScript/index.html" class="boton">JavaScript</a>
+			<a href="/facultad/Html/index.html" class="boton">HTML</a>
+			<a href="/facultad/Php/index.html" class="boton">PHP</a>
+		</div>
+		<div class="cuerpo">
+			<div class="articulo">
+				1. Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. 
+			</div>	
+			<div class="articulo">
+				2. Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. 
+				Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat.
+				<img src="./Desert.jpg"> 
+			</div>	
+			<div class="articulo">
+				3. Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. 
+				Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. 
+				Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. 
+			</div>	
+			<div class="articulo">
+				4. Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. 
+				Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. 
+			</div>	
+			<div class="articulo">
+				5. Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. 
+			</div>	
+		</div>
+		<div class="pie">
+			<footer>
+				<h2>Universidad Tecnológica Nacional Facultad Regional Haedo</h2>
+			</footer>		
+		</div>
+	</div>
+</body>
+</html>

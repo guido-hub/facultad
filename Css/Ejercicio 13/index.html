@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS</title>
+	<meta name="description" content="Esta es mi primera página Web"/>
+	<meta name="author" content="Pepe">
+	<meta charset="utf-8">
+</head>
+
+	<style>
+		html,body{
+			height: 100%;			
+			text-align: center;
+			font-size: 1vw;
+			background-color: lightgreen;
+			overflow: hidden;
+		}
+		div.cabecera{
+			height: 10%;
+			width: 100%;
+			display: block;
+			justify-content: center;
+			display: flex;
+			align-items: center;
+		}
+		form{
+			height: 80%;
+			width: 100%;			
+			left: 0%;
+			overflow: auto;
+			display: block;
+		}
+		div.pie{
+			height: 10%;
+			width: 100%;
+			display: block;
+			justify-content: center;
+			display: flex;
+			align-items: center;
+		}
+		div.BarraControl{
+			display: block;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 10%;
+			width: 100%;
+			background-color: orange;
+		}
+		input{
+			max-width: 50%;
+		}
+		button{
+			width: 10%;
+			height: 80%;
+			background-color: grey;
+			cursor: pointer;
+		}
+		label{
+			display: block;
+		}
+		div.entrada{			
+			text-align: left;
+			height: 150px;
+			float: left;
+			outline: black solid 1px;
+			position: relative;
+			top: 1px;
+			background-color: lightblue;
+		}
+		@media(min-width:900px){
+			.entrada{
+				width: 20%;
+			}
+		}
+		@media(min-width:700px)and(max-width:900px){
+			.entrada{
+				width: 25%;
+			}
+		}
+	</style>
+
+<body>
+	<div class="cabecera">
+		<header>	
+			<h1>Ejercicio 13</h1>	
+			<h2>Formulario RWD</h2>
+		</header>	
+	</div>
+	<form action="./Rta.html" target="_blanck" method="get">
+		<div class="entrada">
+			<label>1. Apellido:</label>
+			<input type="text" name="Ape" required="required">
+		</div>
+		<div class="entrada">
+			<label>2. Nombres:</label>
+			<input type="text" name="Nom" required="required">
+		</div>
+		<div class="entrada">
+			<label>3. Contraseña:</label>
+			<input type="password" name="Contra" required="required">
+		</div>
+		<div class="entrada">
+			<label>4. Campo deshabilitado:</label>
+			<input type="text" disabled="disabled" name="Desha" value="Acá no se escribe" required="required">
+		</div>
+		<div class="entrada">
+			<label>5. Fecha y Hora:</label>
+			<input type="date" name="Fecha" required="required">
+			<input type="time" name="Hora" required="required">
+		</div>
+		<div class="entrada">
+			<label>6. DNI:</label>
+			<input type="number" name="DNI" pattern="[0-9]{8}" required="required">
+		</div>
+		<div class="entrada">
+			<label>7. Actividades Extracurriculares:</label>
+			<label for="Aje">Ajedrez</label>
+			<input type="checkbox" name="Ajedrez" id="Aje">
+			<label for="Aero">Aeromodelismo</label>
+			<input type="checkbox" name="Aeromodelismo" id="Aero">
+			<label for="Alpi">Ajedrez</label>
+			<input type="checkbox" name="Alpinismo" id="Alpi">		
+		</div>
+		<div class="entrada">
+			<label>8. Sexo:</label>
+			<label for="Mascu">Masculino</label>
+			<input type="radio" name="Sexo" id="Mascu" checked="checked">
+			<label for="Feme">Femenino</label>
+			<input type="radio" name="Sexo" id="Feme">			
+		</div>
+		<div class="entrada">
+			<h3>9. Vacío</h3>
+		</div>
+		<div class="entrada">
+			<label>10. Estudios cursados:</label>
+			<select name="Estudios" id="Estu">
+				<option selected="selected" value="pri">Primarios</option>
+				<option value="sec">Secundarios</option>
+				<option value="ter">Terciarios</option>
+				<option value="uni">Universitarios</option>
+				<option value="mae">Maestria</option>
+				<option value="doc">Doctorado</option>
+			</select>
+		</div>
+		<div class="entrada">
+			<label>11. Area de trabajo:</label>
+			<select>
+				<option value="adm" selected="selected">Administración</option>
+				<option value="log">Logística</option>
+				<option value="con">Contabilidad</option>
+				<option value="tes">Tesorería</option>
+				<option value="ven">Ventas</option>
+				<option value="com">Compras</option>
+				<option value="aud">Auditoria</option>
+				<option value="mar">Marketing</option>
+			</select>
+		</div>
+		<div class="entrada">
+			<label>12. Turno:</label>
+			<select>
+				<option value="mañ" selected="selected">Mañana</option>
+				<option value="tar">Tarde</option>
+				<option value="noc">Noche</option>
+			</select>
+		</div>
+		<div class="entrada">
+			<label>13. Conduce:</label>
+			<label>Sí</label>
+			<input type="radio" name="conduccion" id="si" checked="checked">
+			<label>No</label>
+			<input type="radio" name="conduccion" id="no">			
+		</div>
+		<div class="BarraControl">
+			<button type="text">Enviar</button>
+			<button type="reset">Resetear</button>
+		</div>
+	</form>
+
+	<div class="pie">
+		<footer>
+			<h2>Universidad Tecnológica Nacional Facultad Regional Haedo</h2>
+		</footer>	
+	</div>
+</body>
+</html>

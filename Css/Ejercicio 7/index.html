@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS</title>
+	<meta name="description" content="Esta es mi primera página Web"/>
+	<meta name="author" content="Pepe">
+	<meta charset="utf-8">
+
+	<style>
+
+		div.contenedor1,div.contenedor2,div.contenedor3,div.contenedor4,div.contenedor5{
+			height: 200px;
+			width: 200px;
+			float: left;
+			margin: 10px;
+			border: solid;
+			border-radius: 5%;
+			display: flex;		
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			box-shadow: 16px 8px 2px rgba(0,0,0,0.3);
+		}
+
+		div.grande{
+			height: 450px;
+			width: 90%;
+
+			background-color: lightgreen;
+
+			margin: auto;
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+
+		div.contenedor1{
+			background: linear-gradient(lightblue , white, red);
+			font-size: 26px;
+		}
+		div.contenedor2{
+			background: radial-gradient(lightblue , white, red);
+		}
+		div.contenedor3{			
+			background: linear-gradient(lightblue , white, red);
+			font-size: 26px;
+		}
+		div.contenedor4{
+			background: radial-gradient(lightblue , white, red);
+		}
+		div.contenedor5{
+			background: linear-gradient(lightblue , white, red);
+			font-size: 26px;
+		}
+	</style>
+
+</head>
+<body>
+	<header>	
+		<h1>Ejercicio 7</h1>	
+		<h2>Contenedores en Fila</h2>
+	</header>
+
+	<div class="grande">
+		<div class="contenedor1">
+			<p>
+				Texto Contenedor 1
+			</p>
+		</div>
+		<div class="contenedor2">
+			<p>
+				Texto Contenedor 2
+			</p>
+		</div>		
+		<div class="contenedor3">
+			<p>
+				Texto Contenedor 3
+			</p>
+		</div>	
+		<div class="contenedor4">
+			<p>
+				Texto Contenedor 4
+			</p>
+		</div>	
+		<div class="contenedor5">
+			<p>
+				Texto Contenedor 5
+			</p>
+		</div>	
+	</div>
+
+	<section>
+		<article>
+			<h2>Datos del alumno</h2>
+			<p>Nombre: Guido Zamudio. Legajo: 24-15937</p>
+			<p>Correo electrónico: ggerman048@gmail.com</p>
+		</article>
+	</section>
+
+	<footer>Universidad Tecnológica Nacional Facultad Regional Haedo</footer>
+</body>
+</html>

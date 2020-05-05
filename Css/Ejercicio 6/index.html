@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS</title>
+	<meta name="description" content="Esta es mi primera página Web"/>
+	<meta name="author" content="Pepe">
+	<meta charset="utf-8">
+
+	<style>
+
+		img{
+			max-width:50%;
+			max-height:50%;
+		}
+
+		div.contenedor1,div.contenedor2,div.contenedor3,div.contenedor4,div.contenedor5{
+			height: 200px;
+			width: 20%;
+			border: solid;
+			border-radius: 5%;
+		}
+
+		div.grande{
+			height: 90%;
+			width: 90%;
+
+			background-color: lightgreen;
+
+			margin: auto;
+
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+
+		div.contenedor1{
+			background: linear-gradient(lightblue , white, red);
+			box-shadow: 16px 8px 2px rgba(0,0,0,0.3);
+
+			display: flex;
+			margin: auto;			
+			justify-content: center;
+			align-items: center;
+
+		}
+		div.contenedor2{
+			background: radial-gradient(lightblue , white, red);
+
+			font-size: 26px;
+
+			display: flex;
+			margin: auto;			
+			justify-content: center;
+			align-items: center;
+		}
+		div.contenedor3{			
+			background: linear-gradient(45deg, lightblue, white, red);
+
+			display: flex;
+			margin: auto;		
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+		}
+		div.contenedor4{
+			background: linear-gradient(135deg, lightblue, white, red);
+			box-shadow: 16px 8px 2px rgba(0,0,0,0.3);
+			margin: auto;
+		}
+		div.contenedor5{
+			background: linear-gradient(45deg, lightblue, white, red);
+			box-shadow: 16px 8px 2px rgba(0,0,0,0.3);
+
+			margin: auto;			
+		}
+	</style>
+
+</head>
+<body>
+	<header>	
+		<h1>Ejercicio 6</h1>	
+		<h2>Contenedores en Pila</h2>
+	</header>
+
+	<div class="grande">
+		<div class="contenedor1">
+			<p>
+				Texto Contenedor 1
+			</p>
+		</div>
+		<br>
+		<div class="contenedor2">
+			<p>
+				Texto Contenedor 2
+			</p>
+		</div>		
+		<br>
+		<div class="contenedor3">
+			<p>
+				Contenedor 3
+				<img src="./Lighthouse.jpg">
+			</p>
+		</div>	
+		<br>
+		<div class="contenedor4">
+			<p>
+				Texto Contenedor 4
+			</p>
+		</div>	
+		<br>
+		<div class="contenedor5">
+			<p>
+				Texto Contenedor 5
+			</p>
+		</div>	
+	</div>
+
+	<section>
+		<article>
+			<h2>Datos del alumno</h2>
+			<p>Nombre: Guido Zamudio. Legajo: 24-15937</p>
+			<p>Correo electrónico: ggerman048@gmail.com</p>
+		</article>
+	</section>
+
+	<footer>Universidad Tecnológica Nacional Facultad Regional Haedo</footer>
+</body>
+</html>

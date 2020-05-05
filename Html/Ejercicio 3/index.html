@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML</title>
+	<meta name="description" content="Esta es mi primera página Web"/>
+	<meta name="author" content="Pepe">
+	<meta charset="utf-8">
+</head>
+<body>
+	<header>
+		<h1>Ejercicio 3</h1>
+		<h2>Formulario para entradas sin validación</h2>	
+	</header>
+
+	<form action="./Respuesta.html" target="_blanck" method="get">
+		<ul>
+			<li style="margin-top: 10px">
+				<label style="font-weight: bold" for="Apellido">Apellido</label>
+				<br>
+				<input type="text" id="Apellido" name="Ape" autofocus="autofocus">
+			</li>
+
+			<li style="margin-top: 10px">
+				<label style="font-weight: bold" for="Nombre">Nombre</label>
+				<br>
+				<input type="text" id="Nombre" name="Nom" disabled="disabled" value="Pepe">
+			</li>
+
+			<li style="margin-top: 10px">
+				<label style="font-weight: bold" for="Contraseña">Contraseña</label>
+				<br>
+				<input type="password" id="Contraseña" name="Contra">
+			</li>
+
+			<li style="margin-top: 10px">
+				<label style="font-weight: bold" for="Oculto">Oculto</label>
+				<br>
+				<input type="hidden" id="Oculto" name="Ocul">
+			</li>
+
+			<li style="margin-top: 10px">
+				<label style="font-weight: bold" for="Aeróbico">Practica actividades aeróbicas</label>
+				<br>
+				<input type="checkbox" id="Aeróbico" name="Aero">
+			</li>
+
+			<li style="margin-top: 10px">
+				<label style="font-weight: bold" for="Anaeróbico">Practica actividades anaeróbicas</label>
+				<br>
+				<input type="checkbox" id="Anaeróbico" name="Anaero">
+			</li>
+
+			<li style="margin-top: 10px">
+				<label style="font-weight: bold" for="Meditación">Practica meditación</label>
+				<br>
+				<input type="checkbox" id="Meditación" name="Medit">
+			</li>
+
+			<li style="margin-top: 10px">
+				<label style="font-weight: bold" for="Masculino">Masculino</label>
+				<br>
+				<input type="radio" id="Masculino" name="Sex" checked="checked">
+			</li>
+
+			<li style="margin-top: 10px">
+				<label style="font-weight: bold" for="Femenino">Femenino</label>
+				<br>
+				<input type="radio" id="Femenino" name="Sex">
+			</li>
+
+			<li style="margin-top: 10px">
+				<label style="font-weight: bold" for="Estudios">Estudios</label>
+				<br>
+				<select id="Estudios" name="Estu">
+					<option value="pri" selected="selected">Primarios</option>
+					<option value="sec">Secundarios</option>
+					<option value="ter">Terciarios</option>
+					<option value="uni">Universitarios</option>
+					<option value="mae">Maestria</option>
+					<option value="doc">Doctorado</option>
+				</select>
+			</li>			
+
+			<li style="margin-top: 10px">
+				<label style="font-weight: bold" for="FechaHora">Fecha y Hora</label>
+				<br>
+				<input type="date" id="FechaHora" name="Fec">
+				<input type="time" id="FechaHora" name="Fec">
+			</li>
+
+			<li style="margin-top: 10px">
+				<label style="font-weight: bold" for="Color">Color</label>
+				<br>
+				<input type="color" id="Color" name="Col">
+			</li>
+
+			<li>
+				<button>Enviar información</button>
+			</li>
+
+			<li>
+				<button type="reset">Resetear datos</button>
+			</li>
+		</ul>	
+	</form>
+
+	<h2>Validación de datos en entradas de Formulario</h2>
+
+	<form action="./Respuesta.html" target="_blanck"  method="get">
+		<ul>
+			<li style="margin-top: 15px">
+				<label style="font-weight: green" for="Comentarios">Comentarios</label>
+				<br>
+				<input type="text" id="Comentarios" name="Com" required="required">
+			</li>			
+
+			<li style="margin-top: 15px">
+				<label style="font-weight: green" for="Email">Correo electrónico</label>
+				<br>
+				<input type="email" id="Email" name="Correo" placeholder="correo@dominio" required="required">
+			</li>
+
+			<li style="margin-top: 15px">
+				<label style="font-weight: green" for="Entero">Indicar nivel de satisfacción con un número entero (1-5)</label>
+				<br>
+				<input type="number" min="1" max="5" id="Entero" name="Ente" placeholder="x" required="required">
+			</li>
+
+			<li style="margin-top: 15px">
+				<label style="font-weight: green" for="Real">Indicar nivel de satisfacción con un número real (1-9)</label>
+				<br>
+				<input type="number" min="1" max="9" step="0.01" id="Real" name="Rea" placeholder="x.xx" required="required">
+			</li>
+
+			<li style="margin-top: 15px">
+				<label style="font-weight: green" for="sitio">Ingresar sitio web (https://)</label>
+				<br>
+				<input type="url" id="sitio" name="siti" placeholder="https://xxx/xxx/" required="required">
+			</li>
+
+			<li style="margin-top: 15px">
+				<label style="font-weight: green" for="Patrón1">Ingrese patrón para envío</label>
+				<br>
+				<input type="text" id="Patrón1" name="Pato1" pattern="[1-3]{3}[a-u]{4}" title="Ingresar tres números (1-3) y cuatro letras (a-u)" required="required">
+			</li>
+
+			<li style="margin-top: 15px">
+				<label style="font-weight: green" for="Patrón2">Ingrese número de teléfono celular</label>
+				<br>
+				<input type="tel" id="Patrón2" name="Pato2" pattern="\(\+[0-9]{2}\)-[0-9]{3}-[0-9]{8}" placeholder="Ej: (+54) 260 57325417" title="Ingresar número de teléfono con el siguiente formato: (+54) 011 54124323" required="required">
+			</li>						
+
+			<li style="margin-top: 15px">
+				<button>Envío de datos con validación</button>
+			</li>
+
+			<li style="margin-top: 15px">
+				<button type="reset">Resetear valores</button>
+			</li>
+		</ul>
+	</form>
+
+	<section>
+		<article>
+			<h2>Datos del alumno</h2>
+			<p>Nombre: Guido Zamudio. Legajo: 24-15937</p>
+			<p>Correo electrónico: ggerman048@gmail.com</p>
+		</article>
+	</section>
+
+	<footer>Universidad Tecnológica Nacional Facultad Regional Haedo</footer>
+
+</body>
+</html>

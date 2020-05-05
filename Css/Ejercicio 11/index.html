@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS</title>
+
+	<style>
+		body{
+			height: 100%;
+		}
+		img{
+			max-width: 115px;
+			max-height: 115px;
+		}
+		div.contenedor{
+			background-color: grey;
+			position: absolute;
+			margin:auto;
+			height: 100%;
+			width: 80%;
+			margin: auto;
+			top: 0%;
+			left: 10%;
+			font-size: 1vw;
+			z-index: 0;
+		}
+		div.absoluto1{
+			background-color: green;
+			position: absolute;
+			top: 40%;
+			left: 12%;
+			height: 30%;
+			width: 20%;
+			font-size: 1vw;
+			z-index: 2;
+			overflow: auto;
+		}
+		div.absoluto2{
+			background-color: blue;
+			position: absolute;
+			top: 40%;
+			left: 53%;
+			height: 35%;
+			width: 35%;
+			font-size: 1vw;
+			z-index: 1;
+			overflow: auto;
+		}
+		div.absoluto3{
+			background-color: red;
+			opacity: 0.7;
+			position: absolute;
+			top: 20%;
+			left: 42%;
+			height: 30%;
+			width: 30%;
+			font-size: 1vw;
+			z-index: 3;
+			overflow: auto;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="contenedor">
+		<header>	
+			<h1>Ejercicio 11</h1>	
+			<h2>Estructura de Posicionamiento Absoluto</h2>
+		</header>
+
+		<div class="absoluto1">
+			<h2>Contenedor interno 1</h2>
+			<p>Texto Texto Texto Texto Texto Texto Texto Texto
+			Texto Texto Texto Texto Texto Texto Texto Texto
+			Texto Texto Texto Texto Texto Texto Texto Texto</p>
+		</div>
+
+		<div class="absoluto2">
+			<h2>Contenedor interno 2</h2>
+			<img src="./Tulips.jpg">
+			<img src="./Tulips.jpg">
+			<img src="./Tulips.jpg">
+		</div>
+
+		<div class="absoluto3">
+			<h2>Contenedor interno 3</h2>
+			<p>Texto Texto Texto Texto Texto Texto Texto Texto
+			Texto Texto Texto Texto Texto Texto Texto Texto
+			Texto Texto Texto Texto Texto Texto Texto Texto</p>
+		</div>
+
+		<section>
+			<article>
+				<h2>Datos del alumno</h2>
+				<p>Nombre: Guido Zamudio. Legajo: 24-15937</p>
+				<p>Correo electrónico: ggerman048@gmail.com</p>
+			</article>
+		</section>
+
+		<footer>Universidad Tecnológica Nacional Facultad Regional Haedo</footer>	
+	</div>
+</body>
+</html>

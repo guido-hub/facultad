@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS</title>
+	<meta name="description" content="Esta es mi primera página Web"/>
+	<meta name="author" content="Pepe">
+	<meta charset="utf-8">
+
+	<style>
+		div.contenedor{
+			width: 80%;
+			height: 900px;
+			margin: auto;
+			background-color: lightblue;
+		}
+		body{
+			background-color: lightgreen;
+			box-sizing: border-box;
+			padding: 0;
+			margin: 0px;
+		}
+		div.relativo1{
+			margin-left: 0%;
+			margin-top: 10px;
+			height: 50px;
+			width: 600px;
+			font-size: 26px;
+			padding-top: 10px;
+			box-sizing: border-box;
+			background-color: orange;
+		}
+		div.relativo2{
+			margin-left: 15%;
+			margin-top: 50px;
+			height: 50px;
+			width: 600px;
+			font-size: 22px;
+			padding-top: 10px;
+			box-sizing: border-box;
+			background-color: brown;
+		}
+		div.relativo3{
+			margin-left: 30%;
+			margin-top: 10px;
+			scroll-behavior: auto;
+			height: 100px;
+			width: 600px;
+			font-size: 18px;
+			box-sizing: border-box;
+			background-color: brown;
+			overflow: auto;
+		}
+		div.modal{
+			padding-top: 10px;
+			padding-left: 10px;
+			background-color: black;
+			color: white;
+			font-size: 18px;
+			width: 600px;
+			height: 200px;
+			position: fixed;
+			top: 15%;
+			left: 25%;
+			opacity: 0.8;
+			overflow-y: auto;
+			z-index: 10;
+			visibility: visible;
+		}
+	</style>
+</head>
+<body>
+	
+		<div class="modal">
+			Ventana modal<br>
+			Ventana modal<br>
+			Ventana modal<br>
+			Ventana modal<br>
+			Ventana modal<br>
+			Ventana modal<br>
+			Ventana modal<br>
+			Ventana modal<br>
+			Ventana modal<br>
+			Ventana modal<br>
+			Ventana modal<br>
+			Ventana modal<br>
+			Ventana modal
+		</div>
+
+	<div class="contenedor">
+		<header>	
+			<h1>Ejercicio 10</h1>	
+			<h2>Contenedores Relativos</h2>
+		</header>	
+			
+		<div class="relativo1">Contenedor relativo clase 1</div>
+		<div class="relativo1">Contenedor relativo clase 1</div>
+		<div class="relativo2">Contenedor relativo clase 2</div>
+		<div class="relativo2">Contenedor relativo clase 2</div>
+		<div class="relativo2">Contenedor relativo clase 2</div>
+		<div class="relativo3">Contenedor relativo clase 3<br>
+			Texto Texto Texto<br>
+			Texto Texto Texto<br>
+			Texto Texto Texto<br>
+			Texto Texto Texto<br>
+			Texto Texto Texto<br>
+			Texto Texto Texto<br>
+			Texto Texto Texto<br>
+			Texto Texto Texto<br>
+			Texto Texto Texto
+		</div>
+		<div class="relativo2">Contenedor relativo clase 2</div>
+
+
+		<section>
+			<article>
+				<h2>Datos del alumno</h2>
+				<p>Nombre: Guido Zamudio. Legajo: 24-15937</p>
+				<p>Correo electrónico: ggerman048@gmail.com</p>
+			</article>
+		</section>
+
+		<footer>Universidad Tecnológica Nacional Facultad Regional Haedo</footer>
+	</div>
+
+</body>
+</html>

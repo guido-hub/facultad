@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS</title>
+	<meta name="description" content="Esta es mi primera página Web"/>
+	<meta name="author" content="Pepe">
+	<meta charset="utf-8">
+
+	<style>
+		img{
+			max-width: 100%;
+			max-height: 100%;
+		}
+		div.boton{
+			float: left;
+			width: 75px;
+			height: 35px;
+			background-color: grey;
+			border: solid;
+			border-width: thin;
+			padding-top: 5px;
+			text-align: center;
+			box-sizing: border-box;
+		}
+		div.boton:hover{
+			background-color: grey;
+			color:blue;
+		}
+		div.boton:focus{
+			background-color: red;
+		}
+		div.boton:active{
+			background-color: yellow;
+		}
+		div.NuevaFila{
+			margin: 0;
+			margin-bottom: 20px;
+			clear: both;
+		}
+		input.ingreso{
+			display: block;
+			width: 150px;
+		}
+		input.ingreso:focus{
+			background-color: yellow;
+		}
+		div.contenedor{
+			margin: auto;
+			background-color: lightgrey;
+			width: 80%;
+			height: 270px;
+		}
+		div.relativo{
+			float: left;
+			margin-left: 0%;
+			margin-top: 10px;
+			height: 100px;
+			width: 100px;
+			border: solid;
+			border-width: thin;
+		}
+		div.relativo:active{
+			height: auto;
+			width: 500px;
+		}
+	</style>
+</head>
+<body>
+	<header>	
+		<h1>Ejercicio 9</h1>	
+		<h2>Selectores de Evento</h2>
+	</header>
+
+	<div class="contenedor">
+		<div class="boton">
+			<a href="./Rta1.html">Botón 1</a>
+		</div>
+		<div class="boton">
+			<a href="./Rta2.html">Botón 2</a>
+		</div>
+		<div class="boton">
+			<a href="./Rta3.html">Botón 3</a>
+		</div>
+		<div class="NuevaFila"></div>
+		<label>Apellido:</label><br>
+		<input type="text" name="Ape" class="ingreso">
+		<label>Nombre:</label><br>
+		<input type="text" name="Nom" class="ingreso">
+		<div class="NuevaFila"></div>
+		<div class="relativo">
+			<img src="./Desert.jpg">
+		</div>
+		<div class="relativo">
+			<img src="./Hydrangeas.jpg">
+		</div>
+		<div class="relativo">
+			<img src="./Jellyfish.jpg">
+		</div>
+		<div class="relativo">
+			<img src="./Lighthouse.jpg">
+		</div>
+	</div>
+
+	<section>
+		<article>
+			<h2>Datos del alumno</h2>
+			<p>Nombre: Guido Zamudio. Legajo: 24-15937</p>
+			<p>Correo electrónico: ggerman048@gmail.com</p>
+		</article>
+	</section>
+
+	<footer>Universidad Tecnológica Nacional Facultad Regional Haedo</footer>
+</body>
+</html>
