@@ -5,15 +5,54 @@
 	<meta name="description" content="Esta es mi primera página Web"/>
 	<meta name="author" content="Pepe">
 	<meta charset="utf-8">
+
+	<script type="text/javascript">
+		var d = prompt("Ingrese el valor de la variable a cargar:");
+		var z;
+		var a = 1;
+		var b = "1";
+		var c = 2;
+	</script>
+
+
 </head>
 <body>
 	<header>
 		<h1>Ejercicio 3</h1>	
+		<h2>Variables Simples</h2>
 	</header>
 
-	<p>
-		Aun no hay nada escrito...
-	</p>
+	<script type="text/javascript">
+		document.write("<h2>Variable inicializada <span style='color:red'>z</span> desde programa:"+z+"</h2>");
+		document.write("<h2>Tipo de <span style='color:red'>z</span>:"+typeof(z)+"</h2>");
 
+		document.write("<h2>Variable inicializada <span style='color:red'>a</span> desde programa:"+a+"</h2>");
+		document.write("<h2>Tipo de <span style='color:red'>a</span>:"+typeof(a)+"</h2>");
+
+		document.write("<h2>Variable inicializada <span style='color:red'>b</span> desde programa:"+b+"</h2>");
+		document.write("<h2>Tipo de <span style='color:red'>b</span>:"+typeof(b)+"</h2>");
+
+		document.write("<h2>Variable inicializada <span style='color:red'>c</span> desde programa:"+c+"</h2>");
+		document.write("<h2>Tipo de <span style='color:red'>c</span>:"+typeof(c)+"</h2>");
+
+		document.write("<h2><span style='color:red'>a+b:</span>"+a+b+"</h2>");
+		document.write("<h2>Tipo de <span style='color:red'>a+b:</span>"+typeof(a+b)+"</h2>");
+
+		document.write("<h2><span style='color:red'>a+c:</span>"+(a+c)+"</h2>");
+		document.write("<h2>Tipo de <span style='color:red'>a+c:</span>"+typeof(a+c)+"</h2>");
+
+		document.write("<h2>Variable <span style='color:red'>d</span> cargada desde teclado:"+d+"</h2>");
+		document.write("<h2>Tipo de <span style='color:red'>d</span>:"+typeof(d)+"</h2>");
+	</script>
+
+	<section>
+		<article>
+			<h2>Datos del alumno</h2>
+			Nombre: Guido Zamudio. Legajo: 24-15937<br><br>
+			Correo electrónico: ggerman048@gmail.com<br><br>
+		</article>
+	</section>
+
+	<footer>Universidad Tecnológica Nacional Facultad Regional Haedo</footer>
 </body>
 </html>

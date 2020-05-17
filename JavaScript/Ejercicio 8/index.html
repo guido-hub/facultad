@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS</title>
+	<meta name="description" content="Esta es mi primera página Web"/>
+	<meta name="author" content="Pepe">
+	<meta charset="utf-8">
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		html, body{
+			padding-top: 0.3%;
+			height: 100%;
+		}
+		div.contenedor{
+			background-color: lightgreen;
+			width: 100%;
+		}	
+		label{
+			position: relative;
+			left: 10%;
+		}
+		input{
+			position: absolute;
+			left: 20%;	
+			text-align: left;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Ejercicio 8</h1>
+		<h2>Operaciones entre Inputs</h2>	
+	</header>
+	<div class="contenedor">
+		<label>Entrada 1:</label>
+		<input type="text" id="entrada1" autofocus="autofocus"><br>
+		<label>Entrada 2:</label>
+		<input type="text" id="entrada2"><br>
+		<label>Entrada 3:</label>
+		<input type="text" id="entrada3"><br>
+		<label>Respuesta:</label>
+		<input type="text" id="resultado">
+	</div>
+	<button id="suma">Suma</button>
+	<button id="promedio">Promedio</button>
+	<button id="mayor">Mayor</button>
+
+	<script type="text/javascript">
+		document.getElementById("entrada1").value="0";
+		document.getElementById("entrada2").value="0";
+		document.getElementById("entrada3").value="0";
+		document.getElementById("suma").onclick=function(){
+			document.getElementById("resultado").value=parseInt(document.getElementById("entrada1").value)+parseInt(document.getElementById("entrada2").value)+parseInt(document.getElementById("entrada3").value);
+		}
+		document.getElementById("promedio").onclick=function(){
+			document.getElementById("resultado").value=(parseInt(document.getElementById("entrada1").value)+parseInt(document.getElementById("entrada2").value)+parseInt(document.getElementById("entrada3").value))/3;	
+		}
+		document.getElementById("mayor").onclick=function(){
+			if(parseInt(document.getElementById("entrada1").value)>parseInt(document.getElementById("entrada2").value)){
+				if(parseInt(document.getElementById("entrada1").value)>parseInt(document.getElementById("entrada3").value)){
+					document.getElementById("resultado").value=document.getElementById("entrada1").value;
+				}
+				else{
+					document.getElementById("resultado").value=document.getElementById("entrada3").value;	
+				}
+			}
+			else
+			{
+				if(parseInt(document.getElementById("entrada2").value)>parseInt(document.getElementById("entrada3").value)){
+					document.getElementById("resultado").value=document.getElementById("entrada2").value;
+				}
+				else{
+					document.getElementById("resultado").value=document.getElementById("entrada3").value;
+				}
+			}
+		}
+	</script>
+
+	<section>
+		<article>
+			<h2>Datos del alumno</h2>
+			Nombre: Guido Zamudio. Legajo: 24-15937<br><br>
+			Correo electrónico: ggerman048@gmail.com<br><br>
+		</article>
+	</section>
+
+	<footer>Universidad Tecnológica Nacional Facultad Regional Haedo</footer>
+	
+</body>
+</html>

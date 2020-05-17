@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS</title>
+	<meta name="description" content="Esta es mi primera página Web"/>
+	<meta name="author" content="Pepe">
+	<meta charset="utf-8">
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		html, body{
+			height: 100%;
+		}
+		input{
+			width: 99%;
+			text-align: right;		
+		}
+		button{
+			margin-left: 5%;
+			margin-top: 5%;
+			width: 25%;
+			font-size: 1vw;
+		}
+		button.especial{
+			margin-left: 36%;
+		}
+		button.calculos{
+			margin-left: 7%;
+			width: 39%;
+			float: left;
+			height: 25%;	
+		}
+		div.contenedor{
+			background-color: lightgrey;
+			width: 50%;
+			height: 60%;
+			margin: auto;
+		}
+		div.numeros{
+			background-color: lightgreen;
+			position: relative;
+			top: 9%;
+			height: 50%;
+			width: 60%;
+			margin: auto;						
+			display: block;
+		}
+		div.control{
+			height: 30%;
+			width: 60%;
+			position: relative;
+			top: 9%;
+			margin: auto;
+			display: block;
+			background-color: orange;
+		}
+	</style>
+	<script type="text/javascript">
+		var acum = 0;
+	</script>
+</head>
+<body>
+	<header>
+		<h1>Ejercicio 7</h1>	
+		<h2>Funciones Compartidas</h2>
+	</header>
+	<div class="contenedor">
+		<div class="numeros">
+			<input type="text" id="ingreso" disabled="disabled">
+			<button id="boton1">1</button>
+			<button id="boton2">2</button>
+			<button id="boton3">3</button>
+			<button id="boton4">4</button>
+			<button id="boton5">5</button>
+			<button id="boton6">6</button>
+			<button id="boton7">7</button>
+			<button id="boton8">8</button>
+			<button id="boton9">9</button>
+			<button id="boton0" class="especial">0</button>
+		</div>
+		<div class="control">
+			<button id="acumular" class="calculos">+</button>
+			<button id="mostrarAcumulador" class="calculos">Mostrar Acumulador</button>
+			<button id="borrarAcumulador" class="calculos">Borrar Acumulador</button>
+			<button id="borrarDisplay" class="calculos">Borrar Display</button>
+		</div>
+	</div>	
+	
+	<script type="text/javascript">
+		document.getElementById("mostrarAcumulador").onclick=function(){
+			alert(acum);
+		}
+		document.getElementById("borrarAcumulador").onclick=function(){
+			acum=0;
+		}
+		document.getElementById("borrarDisplay").onclick=function(){
+			document.getElementById("ingreso").value="";
+		}
+		document.getElementById("acumular").onclick=function(){
+			acum=acum+parseInt(document.getElementById("ingreso").value);
+			document.getElementById("ingreso").value=""
+		}
+
+
+		document.getElementById("boton1").onclick=function(){
+			document.getElementById("ingreso").value=document.getElementById("ingreso").value+"1";
+		}
+		document.getElementById("boton2").onclick=function(){
+			document.getElementById("ingreso").value=document.getElementById("ingreso").value+"2";
+		}
+		document.getElementById("boton3").onclick=function(){
+			document.getElementById("ingreso").value=document.getElementById("ingreso").value+"3";
+		}
+		document.getElementById("boton4").onclick=function(){
+			document.getElementById("ingreso").value=document.getElementById("ingreso").value+"4";
+		}
+		document.getElementById("boton5").onclick=function(){
+			document.getElementById("ingreso").value=document.getElementById("ingreso").value+"5";
+		}
+		document.getElementById("boton6").onclick=function(){
+			document.getElementById("ingreso").value=document.getElementById("ingreso").value+"6";
+		}
+		document.getElementById("boton7").onclick=function(){
+			document.getElementById("ingreso").value=document.getElementById("ingreso").value+"7";
+		}
+		document.getElementById("boton8").onclick=function(){
+			document.getElementById("ingreso").value=document.getElementById("ingreso").value+"8";
+		}
+		document.getElementById("boton9").onclick=function(){
+			document.getElementById("ingreso").value=document.getElementById("ingreso").value+"9";
+		}
+		document.getElementById("boton0").onclick=function(){
+			document.getElementById("ingreso").value=document.getElementById("ingreso").value+"0";
+		}
+	</script>
+
+	<section>
+		<article>
+			<h2>Datos del alumno</h2>
+			Nombre: Guido Zamudio. Legajo: 24-15937<br><br>
+			Correo electrónico: ggerman048@gmail.com<br><br>
+		</article>
+	</section>
+
+	<footer>Universidad Tecnológica Nacional Facultad Regional Haedo</footer>
+	
+</body>
+</html>

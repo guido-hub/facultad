@@ -5,15 +5,50 @@
 	<meta name="description" content="Esta es mi primera página Web"/>
 	<meta name="author" content="Pepe">
 	<meta charset="utf-8">
+
+	<script type="text/javascript">
+		var variableGlobal;	
+	</script>
+	<style>
+		button{
+			width: 33%;
+		}
+	</style>
 </head>
 <body>
 	<header>
-		<h1>Ejercicio 5</h1>	
+		<h1>Ejercicio 5</h1>
+		<h2>Alcance</h2>	
 	</header>
+	<button id="boton1" onclick="incorrecta">Inicialización incorrecta</button>
+	<button id="boton2">Inicialización correcta</button>
+	<button id="boton3">Muestra variable global</button>
+	
+	<script type="text/javascript">
+		document.getElementById("boton1").onclick=function(){
+			var variableGlobal = prompt("Ingrese valor:");
+			alert("Valor de variableGlobal = "+variableGlobal);
+			alert("Tipo de variableGlobal = "+typeof(variableGlobal));
+		}
+		document.getElementById("boton2").onclick=function(){
+			variableGlobal = prompt("Ingrese valor:");
+			alert("Valor de variableGlobal = "+variableGlobal);
+			alert("Tipo de variableGlobal = "+typeof(variableGlobal));
+		}
+		document.getElementById("boton3").onclick=function(){
+			alert("Valor de variableGlobal = "+variableGlobal);
+			alert("Tipo de variableGlobal = "+typeof(variableGlobal));
+		}
+	</script>
+	
+	<section>
+		<article>
+			<h2>Datos del alumno</h2>
+			Nombre: Guido Zamudio. Legajo: 24-15937<br><br>
+			Correo electrónico: ggerman048@gmail.com<br><br>
+		</article>
+	</section>
 
-	<p>
-		Aun no hay nada escrito...
-	</p>
-
+	<footer>Universidad Tecnológica Nacional Facultad Regional Haedo</footer>
 </body>
 </html>

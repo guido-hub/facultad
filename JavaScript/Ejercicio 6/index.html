@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS</title>
+	<meta name="description" content="Esta es mi primera página Web"/>
+	<meta name="author" content="Pepe">
+	<meta charset="utf-8">
+
+	<style>
+		button, input{
+			width: 15%;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Ejercicio 6</h1>	
+		<h2>Operaciones sobre Inputs</h2>
+	</header>
+	<input type="text" id="ingreso">
+	<button id="boton1">Muestra valor</button>
+	<button id="boton2">Suma 1</button>
+	<button id="boton3">Eleva al cuadrado</button>
+	<button id="boton4">Multiplica x 2</button>
+	
+	<script type="text/javascript">
+		document.getElementById("boton1").onclick=function(){
+			alert(document.getElementById("ingreso").value);
+		}
+		document.getElementById("boton2").onclick=function(){
+			document.getElementById("ingreso").value=parseInt(document.getElementById("ingreso").value)+1;
+		}
+		document.getElementById("boton3").onclick=function(){
+			document.getElementById("ingreso").value=parseInt(document.getElementById("ingreso").value)*parseInt(document.getElementById("ingreso").value);
+		}
+		document.getElementById("boton4").onclick=function(){
+			document.getElementById("ingreso").value=parseInt(document.getElementById("ingreso").value)*2;
+		}
+	</script>
+
+	<section>
+		<article>
+			<h2>Datos del alumno</h2>
+			Nombre: Guido Zamudio. Legajo: 24-15937<br><br>
+			Correo electrónico: ggerman048@gmail.com<br><br>
+		</article>
+	</section>
+
+	<footer>Universidad Tecnológica Nacional Facultad Regional Haedo</footer>
+	
+</body>
+</html>

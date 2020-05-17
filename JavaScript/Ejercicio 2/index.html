@@ -5,15 +5,36 @@
 	<meta name="description" content="Esta es mi primera página Web"/>
 	<meta name="author" content="Pepe">
 	<meta charset="utf-8">
+
 </head>
 <body>
 	<header>
 		<h1>Ejercicio 2</h1>	
+		<h2>Comando en Evento</h2>
 	</header>
 
-	<p>
-		Aun no hay nada escrito...
-	</p>
+	<button onClick="alert('Mensaje de prueba de alerta')">
+		Click para ejecutar una alerta
+	</button>
 
+	<button onclick="prueba()">Click para ejecutar
+	</button>
+
+	<script type="text/javascript">
+	function prueba(){
+	document.write("<h2>Este es el resultado de cliquear el boton y activar una funcion que ejecute un document.write.")
+	}	
+	</script>
+
+	<section>
+		<article>
+			<h2>Datos del alumno</h2>
+			Nombre: Guido Zamudio. Legajo: 24-15937<br><br>
+			Correo electrónico: ggerman048@gmail.com<br><br>
+		</article>
+	</section>
+
+	<footer>Universidad Tecnológica Nacional Facultad Regional Haedo</footer>
+	
 </body>
 </html>
