@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS</title>
+	<meta name="description" content="Esta es mi primera página Web"/>
+	<meta name="author" content="Pepe">
+	<meta charset="utf-8">
+
+	<style>
+		*{
+			padding: 0;
+			margin: 0;			
+		}
+		html, body{
+			font-size: 1.3vw;
+			height: 100%;
+		}
+		td,th,tr{
+			border: solid 1px brown;
+			padding-top: 0;
+			top: 0;
+		}
+		table, thead,tbody{
+			padding-top: 0;
+			top: 0;
+		}
+		div.contenedor{
+			width: 100%;
+			height: 32%;
+			padding-top: 1%;
+			padding-left: 5%;
+			font-size: 1.3vw;		
+			display: block;
+			background-color: orange; 
+		}
+		div.control{
+			background-color: aquamarine;
+			display: block;
+			height: 5%;
+		}
+		div.pres{
+			display: block;
+		}
+		label{
+			display: block;
+			font-family: cursive;
+		}
+		input{
+			font-language-override: normal;
+			height: 20px;
+			display: block;
+		}
+		button{
+			height: 30px;
+			width: 130px;
+			top: 3%;			
+			position: relative;
+			display: block;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Ejercicio 10</h1>
+		<h2>Objetos de datos</h2>	
+	</header>
+	<div class="contenedor">
+		<h3>Agregar alumno</h3>
+		<label>Nombre:</label>
+		<input type="text" id="nombre" autofocus="autofocus">
+		<label>Apellido:</label>
+		<input type="text" id="apellido">	
+		<label>Fecha de nacimiento:</label>
+		<input type="date" id="nacimiento">	
+		<button id="crearAlumno">Crear alumno</button>
+	</div>
+	<div class="control">
+		<button id="apareceDisplay">Listar alumnos</button>
+		<button id="ocultarDisplay">Ocultar presentacion</button>	
+	</div>
+	<div class="pres" id="presentacion"></div>
+
+	<script type="text/javascript">	
+		var matrizDeDatos;
+		precarga();
+	
+		function precarga(){
+			var persona = {nombre: "Analía", apellido: "Zapata" , nacimiento: "1976-02-22"};
+			matrizDeDatos = [persona];
+			matrizDeDatos.push({nombre: "Sabrina", apellido: "Bertoglio", nacimiento: "1954-06-16"});			
+		}
+
+		var btnCreaAlumno = document.getElementById("crearAlumno");
+		var btnVerDisplay = document.getElementById("apareceDisplay");
+		var btnOculDisplay = document.getElementById("ocultarDisplay");
+
+		var inpNombre = document.getElementById("nombre");
+		var inpApellido = document.getElementById("apellido");
+		var inpNacim = document.getElementById("nacimiento");
+
+		var divPresenta = document.getElementById("presentacion");
+
+		btnCreaAlumno.onclick = function(){
+			if (inpNombre.value == "" || inpApellido.value == "" || inpNacim.value == ""){
+				alert("Error! Debe completar todos los ingresos!");
+			}
+			else{
+				matrizDeDatos.push({nombre: inpNombre.value, apellido: inpApellido.value, nacimiento: inpNacim.value});
+				carga();
+			}
+		}
+		btnVerDisplay.onclick = function(){
+			divPresenta.style.display = "block";
+		}
+		btnOculDisplay.onclick = function(){
+			divPresenta.style.display = "none";
+		}		
+		
+		var texto;
+		carga();
+
+		function carga(){
+			texto = "<h1>Presentación</h1>";
+			texto = texto + "<table>";
+			texto = texto + "<thead><tr>";
+			texto = texto + "<th>Nombre</th>";
+			texto = texto + "<th>Apellido</th>";
+			texto = texto + "<th>Nacimiento</th>";
+			texto = texto + "</tr></thead><br/>";
+			texto = texto + "<tbody>";
+			matrizDeDatos.forEach(function(item, indice){
+				texto = texto + "<tr><td>" + item.nombre + "</td>";
+				texto = texto + "<td>" + item.apellido + "</td>";
+				texto = texto + "<td>" + item.nacimiento + "</td> </tr>";
+			});
+			texto = texto + "</tbody>";
+			texto = texto + "</table>";
+			texto = texto + "<h4>Longitud del arreglo de objetos:" + matrizDeDatos.length + "</h4>";
+			divPresenta.innerHTML = texto;
+			divPresenta.style.display = "block";
+		}
+		divPresenta.style.display = "none";
+	</script>
+	
+</body>
+</html>

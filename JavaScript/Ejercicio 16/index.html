@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS</title>
+	<meta name="description" content="Esta es mi primera página Web"/>
+	<meta name="author" content="Pepe">
+	<meta charset="utf-8">
+	<style>
+		*{
+			padding: 0;
+			margin: 0;			
+		}
+		html, body{
+			height: 100%;
+		}		
+		div.contenedor{
+			height: 45%;
+			width: 50%;
+			position: relative;
+			top: 10%;
+			left: 25%;
+			background-color:rgb(128, 194, 67);
+			border:solid midnightblue;
+			overflow-y: auto;
+		}
+		.extra{
+			height: 40px;
+			width: 50%;
+			border: solid 2px turquoise;
+			background-color:lightslategray;
+			color: lightyellow;
+			font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+			position: relative;
+			top: 3%;
+			left: 2%;
+			font-size: 20px;
+			padding-top: 2%;
+			padding-left: 5%;			
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Ejercicio 16</h1>
+		<h2>Creación de objetos</h2>	
+	</header>
+
+	<button id="creacion">Crear</button>
+	<button id="limpieza">Limpiar</button>
+	<button id="informacion">Info</button>
+
+	<div class = "contenedor" id="div"></div>
+</body>
+
+<script type="text/javascript">
+	var btnCrear = document.getElementById("creacion");
+	var btnLimpiar = document.getElementById("limpieza");
+	var btnInfo = document.getElementById("informacion");
+	var div = document.getElementById("div");
+
+	btnCrear.onclick = function(){
+		var objDiv = document.createElement("div");
+		objDiv.className = "extra";
+		var texto = document.createTextNode("Elemento creado: "+(div.childNodes.length+1));
+		objDiv.appendChild(texto);
+		div.appendChild(objDiv);
+	}
+
+	btnLimpiar.onclick = function(){
+		while( div.childNodes.length > 0 ){
+			div.removeChild(div.childNodes[0]);
+		}
+	}
+	
+	btnInfo.onclick = function(){
+		alert("Longitud del childNodes: "+(div.childNodes.length));
+		
+		div.childNodes.forEach(function(item, indice) {
+			alert("Indice: "+indice+" - "+item.innerText);
+		});
+	}
+</script>
+
+</html>

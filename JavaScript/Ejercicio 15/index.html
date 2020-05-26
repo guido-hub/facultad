@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS</title>
+	<meta name="description" content="Esta es mi primera página Web"/>
+	<meta name="author" content="Pepe">
+	<meta charset="utf-8">
+	<style>
+		*{
+			padding: 0;
+			margin: 0;			
+		}
+		html, body{
+			font-size: 1.5vw;
+			height: 100%;
+		}
+		.estilo1{
+			height: 40%;
+			width: 25%;
+			background-color: darkred;
+			border: solid 2px crimson;
+			font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+			color:gold;
+			padding-left: 2%;
+			font-size: 1.2vw;
+			list-style-type:upper-alpha;
+		}
+		.estilo2{
+			height: 45%;
+			width: 20%;
+			background-color:darkslategrey;
+			border: solid 2px goldenrod;
+			font-family:Georgia, 'Times New Roman', Times, serif;
+			color: ghostwhite;
+			position: relative;
+			padding-left: 3%;
+			left: 5%;
+			list-style-type:disc;
+		}
+		.estilo3{
+			height: 50%;
+			width: 35%;
+			background-color:darkslateblue;
+			border: solid 3px chocolate;
+			font-family:Georgia, 'Times New Roman', Times, serif;
+			color:khaki;
+			position: relative;
+			padding-top: 5%;
+			padding-left: 5%;
+			box-sizing: border-box;
+			list-style-type:decimal;
+		}		
+		.estilo4{
+			height: 45%;
+			width: 30%;
+			background-color:darkolivegreen;
+			border:solid mediumblue;
+			font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+			font-size: 1.2vw;
+			color: whitesmoke;
+			position: relative;
+			overflow-y: scroll;
+			padding-left: 4%;
+			list-style-type:circle;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Ejercicio 15</h1>
+		<h2>Ejemplos de cambio de estilo dinámicamente</h2>	
+	</header>
+
+	<ul id="miLista">
+		<h3>Lista con estilo</h3>
+		<li>Texto 1</li>
+		<li>Texto 2</li>
+		<li>Texto 3</li>
+		<li>Texto 4</li>
+		<li>Texto 5</li>
+	</ul>	
+
+	<button id="tipo1">Tipo 1</button>
+	<button id="tipo2">Tipo 2</button>
+	<button id="tipo3">Tipo 3</button>
+	<button id="tipo4">Tipo 4</button>
+
+	<section>
+		<article>
+			<br><br><br>
+			<h2>Datos del alumno</h2><br>
+			Nombre: Guido Zamudio. Legajo: 24-15937<br><br>
+			Correo electrónico: ggerman048@gmail.com<br><br>
+		</article>
+	</section>
+
+	<footer>Universidad Tecnológica Nacional Facultad Regional Haedo</footer>
+	
+</body>
+
+<script type="text/javascript">
+	var lista = document.getElementById("miLista");
+	
+	var uno = document.getElementById("tipo1");
+	var dos = document.getElementById("tipo2");
+	var tres = document.getElementById("tipo3");
+	var cuatro = document.getElementById("tipo4");
+
+	uno.onclick = function(){
+		lista.className = "estilo1";
+	}
+	
+	dos.onclick = function(){
+		lista.className = "estilo2";
+	}
+
+	tres.onclick = function(){
+		lista.className = "estilo3";
+	}
+
+	cuatro.onclick = function(){
+		lista.className = "estilo4";
+	}
+
+</script>
+
+</html>

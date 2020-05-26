@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS</title>
+	<meta name="description" content="Esta es mi primera página Web"/>
+	<meta name="author" content="Pepe">
+	<meta charset="utf-8">
+	<style>
+		*{
+			padding: 0;
+			margin: 0;			
+		}
+		html, body{
+			font-size: 1.5vw;
+			height: 100%;
+		}
+		form{
+			width: 50%;
+			height: 25%;
+			padding-top: 3%;
+			padding-left: 5%;
+			font-size: 1.2vw;		
+			background-color: lightgreen; 
+			margin: auto;
+			box-sizing: border-box;
+		}
+		div.control{
+			width: 50%;
+			height: 10%;
+			display: block;
+			display: flex;
+			justify-content: center;
+			align-items: center;	
+			background-color: lightblue;	
+			margin: auto;	
+		}
+		label{
+			display: block;
+			font-family: cursive;
+		}
+		input{
+			display: block;
+			height: 20px;
+		}
+		button{
+			height: 35px;
+			width: 60px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Ejercicio 12</h1>
+		<h2>Validación</h2>	
+	</header><br>
+	<form id="formu" target="_blank">
+		<label>Ingrese el día del mes:</label>
+		<input id="dia" autofocus="autofocus">
+		<label>Ingrese el mes:</label>
+		<input id="mes">	
+	</form>
+	<div class="control">
+		<button id="borrarForm">Borrar</button>
+		<button id="enviarForm">Enviar</button>
+	</div>
+
+	<section>
+		<article>
+			<br><br><br>
+			<h2>Datos del alumno</h2><br>
+			Nombre: Guido Zamudio. Legajo: 24-15937<br><br>
+			Correo electrónico: ggerman048@gmail.com<br><br>
+		</article>
+	</section>
+
+	<footer>Universidad Tecnológica Nacional Facultad Regional Haedo</footer>
+	
+</body>
+
+<script type="text/javascript">
+	var formulario = document.getElementById("formu");
+
+	var btnBorrar = document.getElementById("borrarForm");
+	var btnEnviar = document.getElementById("enviarForm");
+	
+	var inpDia = document.getElementById("dia");
+	var inpMes = document.getElementById("mes");
+
+	formulario.method = "get";
+	formulario.action = "./Respuesta.html";
+	
+	inpDia.name = "Dia";
+	inpDia.type = "number";
+	inpDia.max = "31";
+	inpDia.min = "1";
+
+	inpMes.name = "Mes";
+	inpMes.type = "number";
+	inpMes.max = "12";
+	inpMes.min = "1";
+
+	inpDia.onkeyup = function(){
+		if(!inpDia.checkValidity()){
+			alert("El valor introducido no es válido. Será borrado");
+			inpDia.value = "";
+		}
+	}
+
+	inpMes.onkeyup = function(){
+		if(!inpMes.checkValidity()){
+			alert("El valor introducido no es válido. Será borrado.");
+			inpMes.value = "";
+		}
+	}
+
+	btnEnviar.onclick = function(){
+		formulario.submit();
+	}
+
+	btnBorrar.onclick = function(){
+		formulario.reset();
+	}
+
+</script>
+
+</html>

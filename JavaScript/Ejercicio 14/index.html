@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS</title>
+	<meta name="description" content="Esta es mi primera página Web"/>
+	<meta name="author" content="Pepe">
+	<meta charset="utf-8">
+	<style>
+		*{
+			padding: 0;
+			margin: 0;			
+		}
+		html, body{
+			font-size: 1.5vw;
+			height: 100%;
+		}
+
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Ejercicio 14</h1>
+		<h2>Localización</h2>	
+	</header>
+	<button id="feisbuk">Facebook</button>
+	<button id="tuiter">Twitter</button>
+	<button id="intagran">Instagram</button>
+
+	<section>
+		<article>
+			<br><br><br>
+			<h2>Datos del alumno</h2><br>
+			Nombre: Guido Zamudio. Legajo: 24-15937<br><br>
+			Correo electrónico: ggerman048@gmail.com<br><br>
+		</article>
+	</section>
+
+	<footer>Universidad Tecnológica Nacional Facultad Regional Haedo</footer>
+	
+</body>
+
+<script type="text/javascript">
+	var face = document.getElementById("feisbuk");
+	var twit = document.getElementById("tuiter");
+	var insta = document.getElementById("intagran");
+
+	face.onclick = function(){
+		location.href = "http://www.facebook.com";
+	}
+	
+	twit.onclick = function(){
+		location.href = "http://www.twitter.com";
+	}
+
+	insta.onclick = function(){
+		location.href = "http://www.instagram.com";
+	}
+</script>
+
+</html>
