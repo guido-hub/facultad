@@ -1,0 +1,98 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+html, body{		
+	height: 100%;
+}
+div.externoActivado{
+	height: 100%;
+	width: 100%;
+	background-color: steelblue;
+	pointer-events:	auto;
+	opacity: 1;
+}
+div.externoDesactivado{
+	height: 100%;
+	width: 100%;
+	background-color: steelblue;
+	pointer-events: none;
+	opacity: 0.3;
+}
+div.modal{
+	position: fixed;
+	position: absolute;
+	height: 50%;
+	width: 50%;
+	left: 40%;
+	top: 40%;
+}
+div.barra{
+	display: block;
+	display: flex;
+	justify-content: flex-end;
+	background-color: slategrey;	
+}
+form{	
+	width: 100%;
+	height: 95%;
+	display: block;
+}
+header, footer{
+	width: 100%;
+	height: 10%;
+	display: block;
+	float: left;
+	font-size: 1vw;
+	align-items: center;
+	justify-content: center;		
+	display: flex;		
+	background-color: cadetblue;
+}
+div.central{
+	width: 50%;
+	height: 80%;
+	float: left;
+	background-color:dimgrey;
+}		
+label{
+	padding-top: 12%;
+	padding-left: 5%;
+	display: block;
+	color: aliceblue;
+}
+input{
+	left: 5%;		
+	width: 80%;
+	height: 8%;		
+	position: relative;		
+}
+select{
+	left: 5%;		
+	width: 80%;
+	height: 8%;		
+	position: relative;			
+}
+button.form{
+	top: 15%;
+	position: relative;
+	width: 25%;
+	height: 10%;		
+	margin: auto;		
+	display: block;
+}
+button.ventana{		
+	width: 5%;
+	height: 5%;				
+}
+.elementoOpcion{		
+	font-family: cursive;		
+}
+button.btnExterno{
+	height: 10%;
+	width: 10%;
+	position: relative;
+	margin-top: 40px;
+	top: 25%;
+	left: 5%;
+}

@@ -1,0 +1,57 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+html, body{		
+	height: 100%;
+}
+form{
+	width: 100%;
+	height: 100%;
+}
+header, footer{
+	width: 100%;
+	height: 10%;
+	display: block;
+	float: left;
+	align-items: center;
+	justify-content: center;		
+	display: flex;		
+	background-color: cadetblue;
+}
+div.central{
+	width: 50%;
+	height: 80%;
+	float: left;
+	background-color:dimgrey;
+}		
+label{
+	padding-top: 12%;
+	padding-left: 5%;
+	display: block;
+	font-size: large;
+	color: aliceblue;
+}
+input{
+	left: 5%;		
+	width: 500px;
+	height: 50px;		
+	position: relative;		
+}
+select{
+	left: 5%;		
+	width: 500px;
+	height: 50px;		
+	position: relative;			
+}
+button{
+	top: 15%;
+	position: relative;
+	width: 85px;
+	height: 35px;		
+	margin: auto;		
+	display: block;				
+}
+.elementoOpcion{		
+	font-family: cursive;		
+}
