@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FormToJSON</title>
+        <script type="text/javascript" src="../jquery-3.5.1.min.js"></script>	
+        <script type="text/javascript" src="./ventanaModal.js"></script>	
+    </head>
+    <link rel="stylesheet" href="./estilo.css">
+    <body>
+        <div id="divExterno">
+            <header>
+                Header al 10%
+            </header>
+            <div class="contenido">
+                <div class="ventanaModal" id="btnModal">Ventana modal</div>    
+            </div>
+            <footer>
+                Footer al 10%
+            </footer>
+        </div>        
+        <div class="modal" id="divModal" >
+            <div class="barra"><button class="ventana" id="btnSalir">X</button></div>
+            <form action="./respuesta.php" method="POST" id="formulario">                    
+                <label>ID Usuario:</label>
+                <input type="text" id="idUsuario" name="idUsuario">
+                <label>Login:</label>
+                <input type="text" id="login" name="login">
+                <label>Apellido:</label>
+                <input type="text" id="apellido" name="apellido">
+                <label>Nombres:</label>
+                <input type="text" id="nombres" name="nombres">
+                <label>Fecha de nacimiento:</label>                    
+                <input type="date" id="fechaNacimiento" name="fechaNacimiento">
+                <div id="envio" class="boton">ENVIAR</div>
+                <l id="resultado"></l>
+            </form>		
+        </div>
+    </body>
+</html>
