@@ -24,12 +24,12 @@ $inpFecha     = $_GET['inpFecha'];
 $orden        = $_GET['orden'];
 
 $sql = "SELECT * FROM gimnasio WHERE ";
-$sql = $sql."ID LIKE '%'"       .$inpID.       "'%' AND ";
-$sql = $sql."Nombre LIKE '%'"   .$inpNombre.   "'%' AND ";
-$sql = $sql."Apellido LIKE '%'" .$inpApellido. "'%' AND ";
-$sql = $sql."Actividad LIKE '%'".$inpActividad."'%' AND ";
-$sql = $sql."Fecha LIKE '%'"    .$inpFecha.    "'%' AND ";
-$sql = $sql."ORDER BY "         .$orden;
+$sql = $sql."ID LIKE '%"       .$inpID.       "%' AND ";
+$sql = $sql."Nombre LIKE '%"   .$inpNombre.   "%' AND ";
+$sql = $sql."Apellido LIKE '%" .$inpApellido. "%' AND ";
+$sql = $sql."Actividad LIKE '%".$inpActividad."%' AND ";
+$sql = $sql."Fecha LIKE '%"    .$inpFecha.    "%' ";
+$sql = $sql."ORDER BY "        .$orden;
 
 $resultado=$conexion->query($sql);
 
@@ -44,7 +44,6 @@ if($conexion->errno){
     die();  
 }
 		
-
 $resultadoCuentaRegistros = $resultado->num_rows;
 
 $visitas=[];
