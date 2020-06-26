@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Php</title>	
+	<meta charset="utf-8">			
+	<script type="text/javascript" src="../jquery-3.5.1.min.js"></script>	
+<script>
+$(document).ready(function(){	
+	$("#cargaInfo").click(function(){
+		creaTabla();
+	});
+	$("#vaciaInfo").click(function(){
+		borraTabla();
+	});
+});
+
+function creaTabla() {
+	$("#registros").empty();
+	$("#cuerpoTabla").empty();
+	$("#registros").html("Aguarde");	
+	$("#cuerpoTabla").html("<p>Esperando respuesta...</p>");
+	var objAjax = $.ajax({
+		type:"get",
+		url:"./salidaVisitas.php",
+		data:{},
+		success:function(respuestaServidor,estado){
+			$("#registros").empty();
+			$("#cuerpoTabla").empty();
+			objJson=JSON.parse(respuestaServidor);
+			objJson.visitas.forEach(function(argValor, argIndice){
+				var objTr = document.createElement("tr");		
+
+				var objTd1 = document.createElement("td");
+				objTd1.setAttribute("campo-dato","ID");
+				objTd1.innerHTML = argValor.ID;
+				objTr.appendChild(objTd1);
+
+				var objTd2 = document.createElement("td");
+				objTd2.setAttribute("campo-dato","Nombre");
+				objTd2.innerHTML = argValor.Nombre;
+				objTr.appendChild(objTd2);
+				
+				var objTd3 = document.createElement("td");
+				objTd3.setAttribute("campo-dato","Apellido");
+				objTd3.innerHTML = argValor.Apellido;
+				objTr.appendChild(objTd3);
+				
+				var objTd4 = document.createElement("td");
+				objTd4.setAttribute("campo-dato","Actividad");
+				objTd4.innerHTML = argValor.Actividad;
+				objTr.appendChild(objTd4);
+
+				var objTd5 = document.createElement("td");
+				objTd5.setAttribute("campo-dato","Fecha");
+				objTd5.innerHTML = argValor.Fecha;
+				objTr.appendChild(objTd5);
+
+				document.getElementById("cuerpoTabla").appendChild(objTr);
+			});
+			$("#registros").html(objJson.visitas.length);
+		}
+	});
+}
+
+function borraTabla(){
+	$("#cuerpoTabla").empty();
+};
+</script>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+		border: 0 none;
+		box-sizing: border-box;
+	}
+	html, body{
+		height: 100%;
+		width: 100%;	
+	}
+	form{
+		width: 100%;
+		height: 100%;		
+		background-color: silver;
+	}
+	header, footer{
+		width: 100%;
+		height: 10%;
+		display: block;				
+		display: flex;
+		align-items: center;
+		float: right;		
+	}
+	h1{
+		margin: auto;
+	}
+	table{
+		border-collapse: collapse;
+		border: darkslateblue;
+		background-color: salmon;
+		width: 100%;
+		height: 80%;
+		display: block;				
+		float: left;
+	}
+	thead, tfoot{
+		width: 100%;
+		height: 10%;
+		display: block;
+		text-align: center;
+		overflow-y: scroll;
+		background-color: turquoise;
+	}
+	tbody{
+		display: block;	
+		height: 80%;
+		width: 100%;
+		background-color: salmon;
+		overflow-y: scroll;
+		text-align: center;
+	}
+	tr{
+		display: block;	
+		overflow: hidden;		
+	}
+	td{
+		float: left;
+	}
+	th{
+		float: left;	
+		width: 100%;	
+		display: flex;
+		box-sizing: border-box;	
+		justify-content: center;
+		align-items: center;
+		padding: .5em;	
+	}
+	tbody tr:nth-child(odd){
+		background-color: firebrick;
+	}
+	tbody tr:nth-child(even){
+		background-color: indianred;	
+	}
+	thead th{
+		background-color: lightblue;
+		border: 1px solid black;
+	}
+	tbody tr:hover{
+		background-color: lightsalmon;
+		color: white;		
+	}
+	[campo-dato='ID']{
+		width: 20%;	
+		height: 55px;
+		border: solid 1px black;
+		border-collapse: collapse;
+	}
+	[campo-dato='Nombre']{
+		width: 20%;	
+		height: 55px;
+		border: solid 1px black;
+		border-collapse: collapse;
+	}
+	[campo-dato='Apellido']{
+		width: 20%;	
+		height: 55px;
+		border: solid 1px black;
+		border-collapse: collapse;
+	}
+	[campo-dato='Actividad']{
+		width: 20%;	
+		height: 55px;
+		border: solid 1px black;
+		border-collapse: collapse;	
+	}
+	[campo-dato='Fecha']{
+		width: 20%;	
+		height: 55px;
+		border: solid 1px black;
+		border-collapse: collapse;	
+	}
+	button{
+		border: solid 1px;
+		height: 50px;
+		width: 100px;	
+	}
+</style>
+</head>	
+
+
+<body>
+	<form method="GET">
+		<header>
+			<h1>Visitas al Gimnasio</h1>	
+			<input type="text" value="ID" id="orden" readonly>
+			<button id="cargaInfo" type="button">Cargar información</button>
+			<button id="vaciaInfo" type="button">Vaciar información</button>
+		</header>	
+		<table>
+			<thead>
+				<th campo-dato='ID'>ID</th>
+				<th campo-dato='Nombre'>Nombre</th>
+				<th campo-dato='Apellido'>Apellido</th>
+				<th campo-dato='Actividad'>Actividad</th>
+				<th campo-dato='Fecha'>Fecha</th>
+			</thead>
+			<tbody id="cuerpoTabla">
+
+			</tbody>
+			<tfoot>
+				<th campo-dato='ID'>Totales</th>
+				<th campo-dato='Nombre'>Nombre</th>
+				<th campo-dato='Apellido'>Apellido</th>
+				<th campo-dato='Actividad'>Actividad</th>
+				<th campo-dato='Fecha'>Fecha</th>
+			</tfoot>
+		</table>
+		<footer>
+			<h2>Cantidad Registros: <l id="registros"></l></h2>
+			<h1>Pie del formulario</h1>			
+		</footer>
+	</form>		
+</body>
+
+</html>
