@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Php</title>	
+	<meta charset="utf-8">			
+	<script type="text/javascript" src="../jquery-3.5.1.min.js"></script>	
+<script>
+var usoActividadFormAlta;
+var usoActividadFormModi;
+$(document).ready(function(){	
+	$("#cargaInfo").click(function(){
+		creaTabla();
+	});
+	$("#vaciaInfo").click(function(){
+		borraTabla();
+	});
+	$("#ID").click(function(){
+		$("#orden").val("ID");
+		creaTabla();
+	});
+	$("#Nombre").click(function(){
+		$("#orden").val("Nombre");
+		creaTabla();
+	});
+	$("#Apellido").click(function(){
+		$("#orden").val("Apellido");
+		creaTabla();
+	});
+	$("#Actividad").click(function(){
+		$("#orden").val("Actividad");
+		creaTabla();
+	});
+	$("#Fecha").click(function(){
+		$("#orden").val("Fecha");
+		creaTabla();
+	});
+
+	usoActividadFormAlta = false;
+	usoActividadFormModi = false;
+	creaOpciones();					
+	$("#btnVentanaModalFormAlta").attr("disabled",true);
+	$("#vaciaInfo").attr("disabled",true);
+
+	$("#btnVentanaModalFormAlta").click(function(){
+		$("#divModalFormAlta").show();	
+		obtenerID();
+		vaciaFormAlta();
+		todoListoParaAlta();
+		$("#divExterno").attr("class","desactivado");
+	});
+
+	$("#btnSalirFormAlta").click(function(){
+		$("#divModalFormAlta").hide();
+		$("#divExterno").attr("class","activado");
+		usoActividadFormAlta = false;
+	});
+
+	$("#btnSalirFormModi").click(function(){
+		$("#divModalFormModi").hide();
+		$("#divExterno").attr("class","activado");
+		usoActividadFormModi = false;
+	});
+
+	$("#btnEnviarFormModi").click(function(){
+		modi();
+		vaciaFormModi();
+		$("#divModalFormResp").show();
+		$("#divModalFormModi").hide();				
+	});
+
+	$("#btnEnviarFormAlta").click(function(){
+		alta();		
+		vaciaFormAlta();
+		$("#divModalFormResp").show();
+		$("#divModalFormAlta").hide();		
+	});
+
+	$("#btnSalirFormResp").click(function(){
+		$("#divModalFormResp").hide();
+		$("#divExterno").attr("class","activado");
+	});
+
+	$("#nombreVisitaFormAlta").keyup(function(){
+		todoListoParaAlta();
+	});
+	$("#nombreVisitaFormAlta").change(function(){
+		todoListoParaAlta();
+	});
+	$("#apellidoVisitaFormAlta").keyup(function(){
+		todoListoParaAlta();
+	});
+	$("#apellidoVisitaFormAlta").change(function(){
+		todoListoParaAlta();
+	});
+	$("#detalleActividadFormAlta").keyup(function(){
+		usoActividadFormAlta = true;
+		todoListoParaAlta();
+	});
+	$("#detalleActividadFormAlta").change(function(){
+		usoActividadFormAlta = true;
+		todoListoParaAlta();
+	});	
+	$("#fechaVisitaFormAlta").keyup(function(){
+		todoListoParaAlta();
+	});
+	$("#fechaVisitaFormAlta").change(function(){
+		todoListoParaAlta();
+	});
+
+	$("#nombreVisitaFormModi").keyup(function(){
+		todoListoParaModi();
+	});
+	$("#nombreVisitaFormModi").click(function(){
+		todoListoParaModi();
+	});
+	$("#apellidoVisitaFormModi").keyup(function(){
+		todoListoParaModi();
+	});	
+	$("#apellidoVisitaFormModi").click(function(){
+		todoListoParaModi();
+	});	
+	$("#detalleActividadFormModi").keyup(function(){
+		usoActividadFormModi = true;
+		todoListoParaModi();
+	});
+	$("#detalleActividadFormModi").click(function(){
+		usoActividadFormModi = true;
+		todoListoParaModi();
+	});
+	$("#fechaVisitaFormModi").keyup(function(){
+		todoListoParaModi();
+	});
+	$("#fechaVisitaFormModi").click(function(){
+		todoListoParaModi();
+	});
+});
+
+function vaciaFormAlta(){	
+	$("#nombreVisitaFormAlta").val("");
+	$("#apellidoVisitaFormAlta").val("");
+	$("#fechaVisitaFormAlta").val("");
+}
+
+function vaciaFormModi(){	
+	$("#idVisitaFormModi").val("");
+	$("#nombreVisitaFormModi").val("");
+	$("#apellidoVisitaFormModi").val("");
+	$("#fechaVisitaFormModi").val("");
+}
+
+function creaOpciones() {
+	var objAjaxOpciones = $.ajax({
+		type:"get",
+		url:"./salidaActividades.php",
+		data:{},
+		success:function(replyServer,state){
+			objJsonOpciones=JSON.parse(replyServer);
+			objJsonOpciones.deportes.forEach(function(argValor,argIndice){
+				var objOpcion = document.createElement("option");			
+				objOpcion.setAttribute("value",argValor.Nombre);
+				objOpcion.setAttribute("class","elementoOpcion");
+				objOpcion.innerHTML = argValor.Nombre;
+				document.getElementById("detalleActividadFormAlta").appendChild(objOpcion);        				      
+			});
+			objJsonOpciones.deportes.forEach(function(argValor,argIndice){
+				var objOpcion = document.createElement("option");			
+				objOpcion.setAttribute("value",argValor.Nombre);
+				objOpcion.setAttribute("class","elementoOpcion");
+				objOpcion.innerHTML = argValor.Nombre;
+				document.getElementById("detalleActividadFormModi").appendChild(objOpcion);        				      
+			});
+		}
+	});
+}
+
+function obtenerID(){
+	var objAjax = $.ajax({
+		type:"get",
+		url:"./obtenerID.php",
+		data:{},
+		success:function(replyServer,state){
+			objJasonID=JSON.parse(replyServer);
+			if (objJasonID.numeroBorrado == null){
+				$("#idVisitaFormAlta").val(objJasonID.ultimoID+1);				
+			}	
+			else{
+				$("#idVisitaFormAlta").val(objJasonID.numeroBorrado);
+			}
+		}
+	});
+	
+}
+
+function completaFichaVisita(numID){
+	var objAjax = $.ajax({
+		type:"get",
+		url:"./salidaVisita.php",
+		data:{id:numID},
+		success:function(replyServer,state){
+			objJsonVisita=JSON.parse(replyServer);
+			$("#idVisitaFormModi").val(objJsonVisita.ID);
+			$("#nombreVisitaFormModi").val(objJsonVisita.Nombre);
+			$("#apellidoVisitaFormModi").val(objJsonVisita.Apellido);
+			$("#detalleActividadFormModi").val(objJsonVisita.Actividad);
+			$("#fechaVisitaFormModi").val(objJsonVisita.Fecha);						
+		}
+	});
+}
+
+function todoListoParaAlta(){
+	if( document.getElementById("nombreVisitaFormAlta").checkValidity()==true && document.getElementById("apellidoVisitaFormAlta").checkValidity()==true && usoActividadFormAlta==true && document.getElementById("fechaVisitaFormAlta").checkValidity()==true ){
+		$("#btnEnviarFormAlta").attr("disabled",false);
+	}
+	else{
+		$("#btnEnviarFormAlta").attr("disabled",true);
+	}
+}
+
+function todoListoParaModi(){
+	if( document.getElementById("nombreVisitaFormModi").checkValidity()==true && document.getElementById("apellidoVisitaFormModi").checkValidity()==true && document.getElementById("fechaVisitaFormModi").checkValidity()==true || usoActividadFormModi==true){
+		$("#btnEnviarFormModi").attr("disabled",false);
+	}
+	else{
+		$("#btnEnviarFormModi").attr("disabled",true);
+	}
+}
+
+function alta(){
+	$("#respuesta").empty();
+	$("#respuesta").html("Esperando respuesta...");
+	var objAjax = $.ajax({
+		type:"get",
+		url:"./alta.php",
+		data:{
+			id:$("#idVisitaFormAlta").val(),
+			nombre:$("#nombreVisitaFormAlta").val(),
+			apellido:$("#apellidoVisitaFormAlta").val(),
+			actividad:$("#detalleActividadFormAlta").val(),
+			fecha:$("#fechaVisitaFormAlta").val(),
+		},
+		success:function(replyServer,state){
+			borraTabla();
+			creaTabla();	
+			$("#respuesta").empty();
+			if(state=="success"){
+				$("#respuesta").html("Alta efectuada con éxito!");
+			}
+			else{
+				$("#respuesta").html("No pudo efectuarse el alta solicitada");
+			}
+		}
+	});
+}
+
+function modi(){
+	$("#respuesta").empty();
+	$("#respuesta").html("Esperando respuesta...");
+	var objAjax = $.ajax({
+		type:"get",
+		url:"./modi.php",
+		data:{
+			id:$("#idVisitaFormModi").val(),
+			nombre:$("#nombreVisitaFormModi").val(),
+			apellido:$("#apellidoVisitaFormModi").val(),
+			actividad:$("#detalleActividadFormModi").val(),
+			fecha:$("#fechaVisitaFormModi").val(),
+		},
+		success:function(replyServer,state){
+			borraTabla();
+			creaTabla();
+			$("#respuesta").empty();
+			if(state=="success"){
+				$("#respuesta").html("Modificación efectuada con éxito!");
+			}
+			else{
+				$("#respuesta").html("No pudo efectuarse la modificación solicitada");
+			}
+		}
+	});
+}
+
+function baja(numID,numAccion){
+	$("#respuesta").empty();
+	$("#respuesta").html("Esperando respuesta...");
+	var objAjax = $.ajax({
+		type:"get",
+		url:"./baja.php",
+		data:{
+			id:numID,
+			accion:numAccion
+		},
+		success:function(replyServer,state){
+			borraTabla();
+			creaTabla();
+			$("#respuesta").empty();
+			if(state=="success"){
+				$("#respuesta").html("Baja efectuada con éxito!");
+			}
+			else{
+				$("#respuesta").html("No pudo efectuarse la baja solicitada");
+			}
+		}
+	});
+}
+
+function creaTabla() {	
+	$("#registros").empty();
+	$("#cuerpoTabla").empty();
+	$("#registros").html("Aguarde");	
+	$("#cuerpoTabla").html("<p>Esperando respuesta...</p>");
+	var objAjax = $.ajax({
+		type:"get",
+		url:"./salidaVisitas.php",
+		data:{
+			orden:$("#orden").val(),
+			inpID:$("#inpID").val(),
+			inpNombre:$("#inpNombre").val(),
+			inpApellido:$("#inpApellido").val(),
+			inpActividad:$("#inpActividad").val(),
+			inpFecha:$("#inpFecha").val()
+		},
+		success:function(respuestaServidor,estado){
+			$("#registros").empty();
+			$("#cuerpoTabla").empty();
+			objJson=JSON.parse(respuestaServidor);
+			objJson.visitas.forEach(function(argValor, argIndice){
+				var objTr = document.createElement("tr");		
+
+				var objTd1 = document.createElement("td");
+				objTd1.setAttribute("campo-dato","ID");
+				objTd1.innerHTML = argValor.ID;
+				objTr.appendChild(objTd1);
+
+				var objTd2 = document.createElement("td");
+				objTd2.setAttribute("campo-dato","Nombre");
+				objTd2.innerHTML = argValor.Nombre;
+				objTr.appendChild(objTd2);
+				
+				var objTd3 = document.createElement("td");
+				objTd3.setAttribute("campo-dato","Apellido");
+				objTd3.innerHTML = argValor.Apellido;
+				objTr.appendChild(objTd3);
+				
+				var objTd4 = document.createElement("td");
+				objTd4.setAttribute("campo-dato","Actividad");
+				objTd4.innerHTML = argValor.Actividad;
+				objTr.appendChild(objTd4);
+
+				var objTd5 = document.createElement("td");
+				objTd5.setAttribute("campo-dato","Fecha");
+				objTd5.innerHTML = argValor.Fecha;
+				objTr.appendChild(objTd5);
+
+				var objTd6 = document.createElement("td");
+				objTd6.setAttribute("campo-dato","Modificación");
+				objTd6.innerHTML = "<button class='btTabla'>Modificar</button>";
+				objTd6.onclick=function(){
+					$("#divModalFormModi").show();
+					$("#divExterno").attr("class","desactivado");					
+					vaciaFormModi();
+					todoListoParaModi();
+					completaFichaVisita(argValor.ID);
+				}
+				objTr.appendChild(objTd6);
+
+				var objTd7 = document.createElement("td");
+				objTd7.setAttribute("campo-dato","Baja");
+				objTd7.innerHTML = "<button class='btTabla'>Eliminar</button>";
+				objTd7.onclick=function(){					
+					if(confirm("Está seguro que desea dar de baja la visita seleccionada?")){
+						if(argValor.ID==objJson.visitas.length){
+							baja(argValor.ID,0);
+						}
+						else{
+							baja(argValor.ID,1);
+						}		
+						$("#divModalFormResp").show();		
+						$("#divExterno").attr("class","desactivado");				
+					}										
+				}
+				objTr.appendChild(objTd7);
+
+				document.getElementById("cuerpoTabla").appendChild(objTr);
+			});
+			$("#registros").html(objJson.visitas.length);
+			$("#btnVentanaModalFormAlta").attr("disabled",false);
+			$("#vaciaInfo").attr("disabled",false);			
+		}
+	});
+}
+
+function borraTabla(){
+	$("#btnVentanaModalFormAlta").attr("disabled",true);
+	$("#vaciaInfo").attr("disabled",true);
+	$("#cuerpoTabla").empty();
+	$("#registros").empty();
+};
+</script>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+		border: 0 none;
+		box-sizing: border-box;		
+	}
+	html, body{
+		height: 100%;
+		width: 100%;	
+	}
+	body{	
+		width: 100%;
+		height: 100%;		
+		background-color: silver;	
+	}
+	header, footer{
+		width: 100%;
+		height: 10%;
+		display: block;				
+		display: flex;
+		align-items: center;
+		float: right;		
+	}
+	h1{
+		margin: auto;
+	}
+	table{
+		border-collapse: collapse;
+		border: darkslateblue;
+		background-color: salmon;
+		width: 100%;
+		height: 80%;
+		display: block;				
+		float: left;
+	}
+	thead{
+		width: 100%;
+		height: 10%;
+		display: block;
+		text-align: center;
+		overflow-y: scroll;
+		background-color: turquoise;
+	}
+	tfoot{
+		width: 100%;
+		height: 5%;
+		display: block;
+		text-align: center;
+		overflow-y: scroll;
+		background-color: turquoise;
+	}
+	tbody{
+		display: block;	
+		height: 85%;
+		width: 100%;
+		background-color: salmon;
+		overflow-y: scroll;
+		text-align: center;
+	}
+	tr{
+		display: block;	
+		overflow: hidden;		
+	}
+	td{
+		float: left;
+	}
+	th{
+		float: left;	
+		width: 100%;				
+		display: flex;
+		box-sizing: border-box;	
+		justify-content: center;
+		align-items: center;
+		padding: .5em;	
+	}
+	tbody tr:nth-child(odd){
+		background-color: firebrick;
+	}
+	tbody tr:nth-child(even){
+		background-color: indianred;	
+	}
+	thead th, tfoot th{		
+		background-color: lightblue;
+		border: 1px solid black;
+	}
+	tbody tr:hover{
+		background-color: lightsalmon;
+		color: white;		
+	}	
+	[campo-dato='ID']{
+		width: 16%;	
+		height: 27px;
+		cursor: pointer;
+		border: solid 1px black;
+		border-collapse: collapse;			
+	}
+	[campo-dato='Nombre']{
+		width: 16%;	
+		height: 27px;
+		cursor: pointer;
+		border: solid 1px black;
+		border-collapse: collapse;
+	}
+	[campo-dato='Apellido']{
+		width: 16%;	
+		height: 27px;
+		cursor: pointer;
+		border: solid 1px black;
+		border-collapse: collapse;
+	}
+	[campo-dato='Actividad']{
+		width: 16%;	
+		height: 27px;
+		cursor: pointer;
+		border: solid 1px black;
+		border-collapse: collapse;	
+	}
+	[campo-dato='Fecha']{
+		width: 16%;	
+		height: 27px;
+		cursor: pointer;
+		border: solid 1px black;
+		border-collapse: collapse;	
+	}
+	[campo-dato='Modificación']{
+		width: 10%;	
+		height: 27px;		
+		cursor: pointer;
+		border: solid 1px black;
+		border-collapse: collapse;			
+	}
+	[campo-dato='Baja']{
+		width: 10%;	
+		height: 27px;		
+		cursor: pointer;
+		border: solid 1px black;
+		border-collapse: collapse;	
+	}
+	button{
+		border: solid 1px;
+		height: 50px;
+		width: 100px;			
+	}
+	button.btTabla{
+		width: 100%;	
+		height: 100%;
+		cursor: pointer;
+		border: solid 1px black;
+		border-collapse: collapse;
+	}
+
+
+
+div.modal1{
+	position: fixed;
+	position: absolute;
+	height: 50%;
+	width: 50%;
+	left: 15%;
+	top: 15%;	
+	border: solid 1px black;	
+}
+div.modal2{
+	position: fixed;
+	position: absolute;
+	height: 50%;
+	width: 50%;
+	left: 35%;
+	top: 35%;	
+	border: solid 1px black;	
+}
+div.modal3{
+	position: fixed;
+	position: absolute;
+	height: 20%;
+	width: 30%;
+	left: 35%;
+	top: 40%;		
+	border: solid 1px black;
+	background-color:bisque;						
+}
+.reply{		
+	font-family: 'Calibri';
+	font-weight: bold;
+	font-size: 1.4vw;	
+	display: flex;
+	padding-top: 40px;	
+	justify-content: center;	
+}
+div.barra{
+	display: block;
+	display: flex;
+	justify-content: flex-end;
+	background-color: slategrey;	
+}
+header.interno, footer.interno{
+	width: 100%;
+	height: 10%;
+	display: block;
+	float: left;
+	font-size: 1vw;
+	align-items: center;
+	justify-content: center;		
+	display: flex;		
+	background-color: cadetblue;
+}
+div.central{
+	width: 50%;
+	height: 75%;
+	float: left;
+	background-color:dimgrey;
+}
+button.form{
+	position: relative;
+	display: flex;
+	top: 20%;
+	left: 30%;		
+	width: 30%;
+	height: 10%;		
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+}
+button.ventana{		
+	width: 5%;
+	height: 5%;				
+}
+select.interno{
+	left: 5%;		
+	width: 80%;
+	height: 8%;		
+	position: relative;			
+}
+input.interno{
+	left: 5%;		
+	width: 80%;
+	height: 8%;		
+	position: relative;		
+}
+label.interno{
+	padding-top: 12%;
+	padding-left: 5%;
+	display: block;
+	color: aliceblue;
+}
+div.activado{
+	width: 100%;
+	height: 100%;		
+	background-color: silver;
+	pointer-events:	auto;
+	opacity: 1;
+}
+div.desactivado{
+	width: 100%;
+	height: 100%;		
+	background-color: silver;
+	pointer-events: none;
+	opacity: 0.3;
+}
+.elementoOpcion{		
+	font-family: cursive;		
+}
+</style>
+</head>	
+
+
+<body>
+
+	<div class="activado" id="divExterno">
+		<header>
+			<h1>Visitas al Gimnasio</h1>	
+			<input type="text" id="orden" value="ID">
+			<button id="cargaInfo" type="button">Cargar información</button>
+			<button id="vaciaInfo" type="button">Vaciar información</button>
+			<button id="btnVentanaModalFormAlta" type="button">Alta Visita</button>
+		</header>	
+		<table>
+			<thead>
+			<tr>
+				<th campo-dato='ID' id="ID">ID</th>
+				<th campo-dato='Nombre' id="Nombre">Nombre</th>
+				<th campo-dato='Apellido' id="Apellido">Apellido</th>
+				<th campo-dato='Actividad' id="Actividad">Actividad</th>
+				<th campo-dato='Fecha' id="Fecha">Fecha</th>
+				<th campo-dato='Modificación' id="Modificación">Modificación</th>
+				<th campo-dato='Baja' id="Baja">Baja</th>
+			</tr>
+			<tr>
+				<th campo-dato='ID'><input type="number" id="inpID"></th>
+				<th campo-dato='Nombre'><input type="text" id="inpNombre"></th>
+				<th campo-dato='Apellido'><input type="text" id="inpApellido"></th>
+				<th campo-dato='Actividad'><input type="text"id="inpActividad"></th>
+				<th campo-dato='Fecha'><input type="date" id="inpFecha"></th>
+			</tr>
+			</thead>
+			<tbody id="cuerpoTabla">
+	
+			</tbody>
+			<tfoot>
+				<th campo-dato='ID'>Totales</th>
+				<th campo-dato='Nombre'>Nombre</th>
+				<th campo-dato='Apellido'>Apellido</th>
+				<th campo-dato='Actividad'>Actividad</th>
+				<th campo-dato='Fecha'>Fecha</th>
+			</tfoot>
+		</table>
+		<footer>
+			<h2>Cantidad Registros: <l id="registros"></l></h2>
+			<h1>Pie del formulario</h1>			
+		</footer>
+	</div>	
+
+	<div class="modal1" id="divModalFormAlta" hidden="hidden">
+		<div class="barra"><button class="ventana" id="btnSalirFormAlta">X</button></div>		
+		<header class="interno">
+			<h1>Formulario para alta - Maestro de Visitas</h1>	
+		</header>
+		<div class="central">
+			<label class="interno">ID Visita:</label>
+			<input class="interno" id="idVisitaFormAlta" type="number" name="numero" readonly>
+			<label class="interno">Nombre:</label>
+			<input class="interno" id="nombreVisitaFormAlta" type="text" name="nombre" maxlength="15" required="required">
+			<label class="interno">Apellido:</label>
+			<input class="interno" id="apellidoVisitaFormAlta" type="text" name="apellido" maxlength="15" required="required">			
+		</div>
+		<div class="central">
+			<label class="interno">Actividad:</label>
+			<select class="interno" id="detalleActividadFormAlta" name="actividad" required="required"></select>
+			<label class="interno">Fecha:</label>
+			<input class="interno" id="fechaVisitaFormAlta" type="date" name="fecha" maxlength="10" required="required">									
+			<button id="btnEnviarFormAlta" class="form">ENVIAR</button>
+		</div>
+		<footer class="interno">
+			<h1>Pie del formulario</h1>
+		</footer>		
+	</div>
+
+	<div class="modal2" id="divModalFormModi" hidden="hidden">
+		<div class="barra"><button class="ventana" id="btnSalirFormModi">X</button></div>		
+		<header class="interno">
+			<h1>Formulario para modificación - Maestro de Visitas</h1>	
+		</header>
+		<div class="central">
+			<label class="interno">ID Visita:</label>
+			<input class="interno" id="idVisitaFormModi" type="number" name="numero" readonly>
+			<label class="interno">Nombre:</label>
+			<input class="interno" id="nombreVisitaFormModi" type="text" name="nombre" maxlength="15" required="required">
+			<label class="interno">Apellido:</label>
+			<input class="interno" id="apellidoVisitaFormModi" type="text" name="apellido" maxlength="15" required="required">			
+		</div>
+		<div class="central">
+			<label class="interno">Actividad:</label>
+			<select class="interno" id="detalleActividadFormModi" name="actividad" required="required"></select>
+			<label class="interno">Fecha:</label>
+			<input class="interno" id="fechaVisitaFormModi" type="date" name="fecha" maxlength="10" required="required">									
+			<button id="btnEnviarFormModi" class="form">ENVIAR</button>
+		</div>
+		<footer class="interno">
+			<h1>Pie del formulario</h1>
+		</footer>		
+	</div>
+
+	<div class="modal3" id="divModalFormResp" hidden="hidden">
+		<div class="barra"><button class="ventana" id="btnSalirFormResp">X</button></div>	
+		<l id="respuesta" class="reply"></l>
+	</div>
+
+</body>
+
+</html>
