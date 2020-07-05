@@ -1,5 +1,4 @@
 <?php
-sleep(3);
 include("./conexion.php");
 
 $conexion = conectar2();

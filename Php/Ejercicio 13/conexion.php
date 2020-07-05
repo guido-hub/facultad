@@ -1,5 +1,6 @@
 <?php
 function conectar1(){
+    sleep(2);
     $server = "localhost";
     $user   = "labo3";
     $pass   = "abc123";
