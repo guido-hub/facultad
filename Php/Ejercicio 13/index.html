@@ -180,15 +180,9 @@ function obtenerID(){
 		data:{},
 		success:function(replyServer,state){
 			objJasonID=JSON.parse(replyServer);
-			if (objJasonID.numeroBorrado == null){
-				$("#idVisitaFormAlta").val(objJasonID.ultimoID+1);				
-			}	
-			else{
-				$("#idVisitaFormAlta").val(objJasonID.numeroBorrado);
-			}
+			$("#idVisitaFormAlta").val(objJasonID.idFaltante);							
 		}
 	});
-	
 }
 
 function completaFichaVisita(numID){
@@ -279,16 +273,13 @@ function modi(){
 	});
 }
 
-function baja(numID,numAccion){
+function baja(numID){
 	$("#respuesta").empty();
 	$("#respuesta").html("Esperando respuesta...");
 	var objAjax = $.ajax({
 		type:"get",
 		url:"./baja.php",
-		data:{
-			id:numID,
-			accion:numAccion
-		},
+		data:{id:numID},
 		success:function(replyServer,state){
 			borraTabla();
 			creaTabla();
@@ -368,12 +359,7 @@ function creaTabla() {
 				objTd7.innerHTML = "<button class='btTabla'>Eliminar</button>";
 				objTd7.onclick=function(){					
 					if(confirm("Está seguro que desea dar de baja la visita seleccionada?")){
-						if(argValor.ID==objJson.visitas.length){
-							baja(argValor.ID,0);
-						}
-						else{
-							baja(argValor.ID,1);
-						}		
+						baja(argValor.ID);						
 						$("#divModalFormResp").show();		
 						$("#divExterno").attr("class","desactivado");				
 					}										

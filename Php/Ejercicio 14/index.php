@@ -1,8 +1,7 @@
 <?php
-sleep("2");
-include("./conexion.php");
+sleep(1);
 
-$conexion = conectar2();
+$conexion = new mysqli("localhost","labo3","abc123","labo3");
 
 if($conexion->connect_errno){
     $puntero=fopen("./errores.log","a");
@@ -17,8 +16,7 @@ if($conexion->connect_errno){
 
 $conexion->set_charset("utf8");
 
-$sql = "SELECT * FROM actividades";
-
+$sql = "SELECT * FROM gimnasio";
 $resultado=$conexion->query($sql);
 
 if($conexion->errno){
@@ -31,27 +29,27 @@ if($conexion->errno){
     fclose($puntero);
     die();  
 }
-		
-$resultadoCuentaRegistros = $resultado->num_rows;
 
-$actividades=[];
+$i = 1;
+$idFaltante=1;
+$num=false;
 
 while($fila=$resultado->fetch_assoc()){
-    $objActividad=new stdClass();
-    $objActividad->ID=$fila['ID'];
-    $objActividad->Nombre=$fila['Nombre'];    
-    array_push($actividades,$objActividad);
+    if(!($fila['ID']==$i) && $num==false){
+        $idFaltante=$i;
+        $num = true;
+    }
+    $i = $i+1;
 }
 
-$objDeportes=new stdClass();
+if($num==false){
+    $idFaltante=$i;
+}
 
-$objDeportes->deportes=$actividades;
-
-$objDeportes->cuenta=$resultadoCuentaRegistros;
-
-$salidaJSON=json_encode($objDeportes);
+echo "Valor de variable i : ".$i."<br>";
+echo "Valor de variable idFaltante : ".$idFaltante;
 
 $conexion->close();
 
-echo $salidaJSON;
+//echo $salidaJSON;
 ?>

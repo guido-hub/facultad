@@ -1,7 +1,8 @@
 <?php
 sleep(1);
+include("./conexion.php");
 
-$conexion = new mysqli("localhost","labo3","abc123","labo3");
+$conexion = conectar2();
 
 if($conexion->connect_errno){
     $puntero=fopen("./errores.log","a");
@@ -16,11 +17,8 @@ if($conexion->connect_errno){
 
 $conexion->set_charset("utf8");
 
-$sql = "SELECT * FROM borrados ORDER BY Numero";
-$resultado1=$conexion->query($sql);
-
 $sql = "SELECT * FROM gimnasio";
-$resultado2=$conexion->query($sql);
+$resultado=$conexion->query($sql);
 
 if($conexion->errno){
     $puntero=fopen("./errores.log","a");
@@ -33,11 +31,24 @@ if($conexion->errno){
     die();  
 }
 
-$fila=$resultado1->fetch_assoc();
-$objRegistro=new stdClass();
-$objRegistro->numeroBorrado=$fila['Numero'];
+$i = 1;
+$idFaltante=1;
+$num=false;
 
-$objRegistro->ultimoID=$resultado2->num_rows;
+while($fila=$resultado->fetch_assoc()){
+    if(!($fila['ID']==$i) && $num==false){
+        $idFaltante=$i;
+        $num = true;
+    }
+    $i = $i+1;
+}
+
+if($num==false){
+    $idFaltante=$i;
+}
+
+$objRegistro=new stdClass();
+$objRegistro->idFaltante=$idFaltante;
 
 $salidaJSON=json_encode($objRegistro);
 

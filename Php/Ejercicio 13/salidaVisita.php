@@ -1,7 +1,8 @@
 <?php
 sleep(1);
+include("./conexion.php");
 
-$conexion = new mysqli("localhost","labo3","abc123","labo3");
+$conexion = conectar2();
 
 if($conexion->connect_errno){
     $puntero=fopen("./errores.log","a");
