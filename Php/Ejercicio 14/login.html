@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Log In</title>
+        <script src="../jquery-3.5.1.min.js"></script>
+        <script src="./JSyJQ.js"></script>
+        <link rel="stylesheet" href="./estiloLog.css">
+    </head>
+
+    <body>        
+
+        <div class="activado" id="divExterior">
+            <form action="./ingresoAlSistema.php">
+                <h1 class="login">Acceso para usuarios</h1>
+                <label class="login" for="user">Usuario:</label>
+                <input class="login" name="user" type="text" id="inpUsuario">
+                <label class="login" for="pass">Clave:</label>
+                <input class="login" name="pass" type="password" id="inpClave">
+                <button class="login">Ingresar</button>
+                <button class="login" id="btnRegistrarse" type="button">Registrarse</button>
+            </form>            
+        </div>
+
+        <div class="modal1" id="registro" hidden>   
+            <div class="superior"><button class="ventana" id="btnSalirRegistroUser">X</button></div>         
+            <header class="interno">
+                <h2>Registro - Alta de usuarios</h2>
+            </header>    
+            <div class="medio">
+                <label class="interno">Usuario:</label>
+                <input class="interno" type="text" id="nameUser" minlength="6" maxlength="25" required title="Entre 6 y 25 caracteres">
+                <label class="interno">Clave:</label>
+                <input class="interno" type="password" id="passwordUser" minlength="6" maxlength="25" required title="Entre 6 y 25 caracteres">
+            </div>                      
+            <footer class="interno">                
+                <button class="interno" id="btnEntrarDetalleUser">Detalle</button>
+                <button class="interno" id="btnAltaUser">Alta Usuario</button>
+            </footer>
+            <div class="inferior">Log: <l id="estadoCargaUser"></l></div>
+        </div>
+
+        <div class="modal2" id="detalleRegistros" hidden>
+            <div class="superior"><button class="ventana" id="btnSalirDetalleUser">X</button></div>
+            <header class="interno">
+                <h2>Detalle de usuarios</h2>
+            </header>                        
+            <table>
+                <thead>
+                    <tr>
+                    <th campo-dato='Numero' id="NumeroUser">ID</th>
+                    <th campo-dato='Nombre' id="NombreUser">Nombre</th>
+                    <th campo-dato='Clave' id="ClaveUser">Password</th>                    
+                    <th campo-dato='Baja' id="BajaUser">Baja</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTablaUser">
+                </tbody>
+            </table>
+            <footer class="interno">
+                <button class="interno" id="btnCargaUser">Cargar Usuarios</button>
+                <button class="interno" id="btnVaciaUser">Vaciar Usuarios</button>                
+            </footer>
+            <div class="inferior">Log: <l id="estadoUser"></l></div>
+        </div>
+
+    </body>
+</html>
+

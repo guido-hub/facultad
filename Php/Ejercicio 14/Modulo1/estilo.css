@@ -1,0 +1,262 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    box-sizing: border-box;		
+}
+html, body{
+    height: 100%;
+    width: 100%;	
+}
+body{	
+    width: 100%;
+    height: 100%;		
+    background-color: silver;	
+}
+header, footer{
+    width: 100%;
+    height: 10%;
+    display: block;				
+    display: flex;
+    align-items: center;
+    float: right;		
+}
+h1{
+    margin: auto;
+}
+table{
+    border-collapse: collapse;
+    border: darkslateblue;
+    background-color: salmon;
+    width: 100%;
+    height: 80%;
+    display: block;				
+    float: left;
+}
+thead{
+    width: 100%;
+    height: 10%;
+    display: block;
+    text-align: center;
+    overflow-y: scroll;
+    background-color: turquoise;
+}
+tfoot{
+    width: 100%;
+    height: 5%;
+    display: block;
+    text-align: center;
+    overflow-y: scroll;
+    background-color: turquoise;
+}
+tbody{
+    display: block;	
+    height: 85%;
+    width: 100%;
+    background-color: salmon;
+    overflow-y: scroll;
+    text-align: center;
+}
+tr{
+    display: block;	
+    overflow: hidden;		
+}
+td{
+    float: left;
+}
+th{
+    float: left;	
+    width: 100%;				
+    display: flex;
+    box-sizing: border-box;	
+    justify-content: center;
+    align-items: center;
+    padding: .5em;	
+}
+tbody tr:nth-child(odd){
+    background-color: firebrick;
+}
+tbody tr:nth-child(even){
+    background-color: indianred;	
+}
+thead th, tfoot th{		
+    background-color: lightblue;
+    border: 1px solid black;
+}
+tbody tr:hover{
+    background-color: lightsalmon;
+    color: white;		
+}	
+[campo-dato='ID']{
+    width: 16%;	
+    height: 27px;
+    cursor: pointer;
+    border: solid 1px black;
+    border-collapse: collapse;			
+}
+[campo-dato='Nombre']{
+    width: 16%;	
+    height: 27px;
+    cursor: pointer;
+    border: solid 1px black;
+    border-collapse: collapse;
+}
+[campo-dato='Apellido']{
+    width: 16%;	
+    height: 27px;
+    cursor: pointer;
+    border: solid 1px black;
+    border-collapse: collapse;
+}
+[campo-dato='Actividad']{
+    width: 16%;	
+    height: 27px;
+    cursor: pointer;
+    border: solid 1px black;
+    border-collapse: collapse;	
+}
+[campo-dato='Fecha']{
+    width: 16%;	
+    height: 27px;
+    cursor: pointer;
+    border: solid 1px black;
+    border-collapse: collapse;	
+}
+[campo-dato='Modificación']{
+    width: 10%;	
+    height: 27px;		
+    cursor: pointer;
+    border: solid 1px black;
+    border-collapse: collapse;			
+}
+[campo-dato='Baja']{
+    width: 10%;	
+    height: 27px;		
+    cursor: pointer;
+    border: solid 1px black;
+    border-collapse: collapse;	
+}
+button{
+    border: solid 1px;
+    height: 50px;
+    width: 100px;			
+}
+button.btTabla{
+    width: 100%;	
+    height: 100%;
+    cursor: pointer;
+    border: solid 1px black;
+    border-collapse: collapse;
+}
+
+
+
+div.modal1{
+position: fixed;
+position: absolute;
+height: 50%;
+width: 50%;
+left: 15%;
+top: 15%;	
+border: solid 1px black;	
+}
+div.modal2{
+position: fixed;
+position: absolute;
+height: 50%;
+width: 50%;
+left: 35%;
+top: 35%;	
+border: solid 1px black;	
+}
+div.modal3{
+position: fixed;
+position: absolute;
+height: 20%;
+width: 30%;
+left: 35%;
+top: 40%;		
+border: solid 1px black;
+background-color:bisque;						
+}
+.reply{		
+font-family: 'Calibri';
+font-weight: bold;
+font-size: 1.4vw;	
+display: flex;
+padding-top: 40px;	
+justify-content: center;	
+}
+div.barra{
+display: block;
+display: flex;
+justify-content: flex-end;
+background-color: slategrey;	
+}
+header.interno, footer.interno{
+width: 100%;
+height: 10%;
+display: block;
+float: left;
+font-size: 1vw;
+align-items: center;
+justify-content: center;		
+display: flex;		
+background-color: cadetblue;
+}
+div.central{
+width: 50%;
+height: 75%;
+float: left;
+background-color:dimgrey;
+}
+button.form{
+position: relative;
+display: flex;
+top: 20%;
+left: 30%;		
+width: 30%;
+height: 10%;		
+justify-content: center;
+text-align: center;
+align-items: center;
+}
+button.ventana{		
+width: 5%;
+height: 5%;				
+}
+select.interno{
+left: 5%;		
+width: 80%;
+height: 8%;		
+position: relative;			
+}
+input.interno{
+left: 5%;		
+width: 80%;
+height: 8%;		
+position: relative;		
+}
+label.interno{
+padding-top: 12%;
+padding-left: 5%;
+display: block;
+color: aliceblue;
+}
+div.activado{
+width: 100%;
+height: 100%;		
+background-color: silver;
+pointer-events:	auto;
+opacity: 1;
+}
+div.desactivado{
+width: 100%;
+height: 100%;		
+background-color: silver;
+pointer-events: none;
+opacity: 0.3;
+}
+.elementoOpcion{		
+font-family: cursive;		
+}

@@ -16,7 +16,7 @@ if($conexion->connect_errno){
 
 $conexion->set_charset("utf8");
 
-$sql = "SELECT * FROM gimnasio";
+$sql = "SELECT * FROM gimnasio ORDER BY ID";
 $resultado=$conexion->query($sql);
 
 if($conexion->errno){
