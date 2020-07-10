@@ -1,12 +1,13 @@
 <?php
-sleep(3);
+//sleep(3);
+//$conexion2 = new mysqli("localhost","labo3","abc123","labo3");
 
-$conexion = new mysqli("localhost","labo3","abc123","labo3");
+$conexion2 = new mysqli("sql10.freemysqlhosting.net:3306","sql10352817","xLJQbXIj1E","sql10352817");
 
-if($conexion->connect_errno){
+if($conexion2->connect_errno){
     $puntero=fopen("./errores.log","a");
-    fwrite($puntero,"Fallo conexion en la base de datos: ");
-    fwrite($puntero,$conexion->connect_errno."\n ");
+    fwrite($puntero,"Fallo conexion2 en la base de datos: ");
+    fwrite($puntero,$conexion2->connect_errno."\n ");
     $fecha=date("Y-m-d");
     fwrite($puntero,date("Y-m-d H-i")."\n ");
     fwrite($puntero,"\n");
@@ -14,7 +15,7 @@ if($conexion->connect_errno){
     die();	
 }
 
-$conexion->set_charset("utf8");
+$conexion2->set_charset("utf8");
 
 $inpID        = $_GET['inpID'];
 $inpNombre    = $_GET['inpNombre'];
@@ -31,12 +32,12 @@ $sql = $sql."Actividad LIKE '%".$inpActividad."%' AND ";
 $sql = $sql."Fecha LIKE '%"    .$inpFecha.    "%' ";
 $sql = $sql."ORDER BY "        .$orden;
 
-$resultado=$conexion->query($sql);
+$resultado=$conexion2->query($sql);
 
-if($conexion->errno){
+if($conexion2->errno){
     $puntero=fopen("./errores.log","a");
     fwrite($puntero,"Fallo en la ejecucion de la sentencia sql: ");
-    fwrite($puntero,$conexion->connect_errno."\n ");
+    fwrite($puntero,$conexion2->connect_errno."\n ");
     $fecha=date("Y-m-d");
     fwrite($puntero,date("Y-m-d H-i")."\n ");
     fwrite($puntero,"\n");
@@ -66,7 +67,7 @@ $objVisitas->cuenta=$resultadoCuentaRegistros;
 
 $salidaJSON=json_encode($objVisitas);
 
-$conexion->close();
+$conexion2->close();
 
 echo $salidaJSON;
 ?>

@@ -1,22 +1,23 @@
 <?php
-sleep(3);
+//sleep(3);
+//$conexion1 = new mysqli("localhost","labo3","abc123","labo3");
 
-$conexion = new mysqli("localhost","labo3","abc123","labo3");
+$conexion2 = new mysqli("sql10.freemysqlhosting.net:3306","sql10352817","xLJQbXIj1E","sql10352817");
 
-if($conexion->connect_errno){
-	echo "Falló la conexion " . $conexion->connect_errno;
+if($conexion2->connect_errno){
+	echo "Falló la conexion " . $conexion2->connect_errno;
 }
 
-$conexion->set_charset("utf8");
+$conexion2->set_charset("utf8");
 
 $orden=$_GET['orden'];
 
 $sql = "SELECT * FROM gimnasio ORDER BY ".$orden;
 
-$resultado=$conexion->query($sql);
+$resultado=$conexion2->query($sql);
 
-if($conexion->errno){
-	die($conexion->error);
+if($conexion2->errno){
+	die($conexion2->error);
 }
 		
 
@@ -42,7 +43,7 @@ $objVisitas->cuenta=$resultadoCuentaRegistros;
 
 $salidaJSON=json_encode($objVisitas);
 
-$conexion->close();
+$conexion2->close();
 
 echo $salidaJSON;
 ?>
