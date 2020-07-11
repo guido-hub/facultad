@@ -27,9 +27,15 @@ function Autenticacion($user,$pass){
     $conexion = conectar2();
     $passEncripted=sha1($pass);
 
-    $sql = "SELECT * FROM usuarios WHERE Nombre = '".$user."' AND Clave = '".$passEncripted."' ";    
-    $Aceptado = $conexion->query($sql);
-    
+    $sql = "SELECT * FROM usuarios WHERE Nombre = '".$user."' AND Clave = '".$passEncripted."' ";               
+    $resultado = $conexion->query($sql);
+    $fila=$resultado->fetch_assoc();    
+    if($fila['Nombre']==$user && $fila['Clave']==$passEncripted){
+        $Aceptado=true;
+    }
+    else{
+        $Aceptado=false;
+    }
     $conexion->close();
     return $Aceptado;   
 }

@@ -10,13 +10,13 @@
     <body>        
 
         <div class="activado" id="divExterior">
-            <form action="./ingresoAlSistema.php">
+            <form action="./ingresoAlSistema.php" method="GET">
                 <h1 class="login">Acceso para usuarios</h1>
                 <label class="login" for="user">Usuario:</label>
                 <input class="login" name="user" type="text" id="inpUsuario">
                 <label class="login" for="pass">Clave:</label>
                 <input class="login" name="pass" type="password" id="inpClave">
-                <button class="login">Ingresar</button>
+                <button class="login" type="submit">Ingresar</button>
                 <button class="login" id="btnRegistrarse" type="button">Registrarse</button>
             </form>            
         </div>

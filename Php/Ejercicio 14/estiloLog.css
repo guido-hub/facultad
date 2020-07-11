@@ -101,28 +101,28 @@ tbody tr:hover{
     color: white;		
 }	
 [campo-dato='Numero']{
-    width: 5%;	
+    width: 4%;	
     height: 28px;	
     cursor: pointer;
     border: solid 1px black;
     border-collapse: collapse;	    
 }
 [campo-dato='Nombre']{
-    width: 35%;	
+    width: 43%;	
     height: 28px;	
     cursor: pointer;
     border: solid 1px black;
     border-collapse: collapse;
 }
 [campo-dato='Clave']{
-    width: 45%;	
+    width: 43%;	
     height: 28px;	
     cursor: pointer;
     border: solid 1px black;
     border-collapse: collapse;
 }
 [campo-dato='Baja']{
-    width: 15%;	
+    width: 10%;	
     height: 28px;	
     cursor: pointer;
     border: solid 1px black;
@@ -143,17 +143,17 @@ div.modal1{
     position: absolute;
     height: 39%;
     width: 30%;
-    left: 15%;
-    top: 25%;	
+    left: 10%;
+    top: 30%;	
     border: solid 1px black;	
     }
 div.modal2{
     position: fixed;
     position: absolute;
     height: 39%;
-    width: 40%;
-    left: 45%;
-    top: 25%;	
+    width: 60%;
+    left: 40%;
+    top: 30%;	
     border: solid 1px black;	
     }
 div.superior{

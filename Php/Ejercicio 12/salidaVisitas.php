@@ -1,12 +1,12 @@
 <?php
 //sleep(3);
-//$conexion2 = new mysqli("localhost","labo3","abc123","labo3");
+//$conexion1 = new mysqli("localhost","labo3","abc123","labo3");
 
 $conexion2 = new mysqli("sql10.freemysqlhosting.net:3306","sql10352817","xLJQbXIj1E","sql10352817");
 
 if($conexion2->connect_errno){
     $puntero=fopen("./errores.log","a");
-    fwrite($puntero,"Fallo conexion2 en la base de datos: ");
+    fwrite($puntero,"Fallo conexion en la base de datos: ");
     fwrite($puntero,$conexion2->connect_errno."\n ");
     $fecha=date("Y-m-d");
     fwrite($puntero,date("Y-m-d H-i")."\n ");
