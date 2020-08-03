@@ -24,7 +24,7 @@ if(!Autenticacion($usuario,$clave)){
 }
 
 function Autenticacion($user,$pass){
-    $conexion = conectar2();
+    $conexion = conectar1();
     $passEncripted=sha1($pass);
 
     $sql = "SELECT * FROM usuarios WHERE Nombre = '".$user."' AND Clave = '".$passEncripted."' ";               

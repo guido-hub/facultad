@@ -15,7 +15,7 @@ function conectar2(){
     $base   = "sql10352817";
     return new mysqli($server,$user,$pass,$base);
 }
-$conexion = conectar2();
+$conexion = conectar1();
 
 if($conexion->connect_errno){
     $puntero=fopen("./errores.log","a");
